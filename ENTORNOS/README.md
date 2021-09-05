@@ -1,5 +1,16 @@
-# dam1_21-22
+# ENTORNOS dam1_21-22
 
-clases de programacion
+# TEMAS
 
-clases de entornos
+- CONTROL DE VERSIONES
+
+- ENTORNOS DE DESARROLLO
+
+- HERRAMIENTAS DE COMPILACION : Maven, Gradle.
+
+- DESARROLLO DE SOFTWARE: Scrum, UML
+
+- PAQUETES AUXILIARES: Configuracion y Logging
+
+- PRUEBAS
+ 
