@@ -6,6 +6,10 @@
    - GIT, SVN , MERCURIAL
    - GITHUB, GITLAB
    - GIST
+   - Linea de comandos. git add, commit, status, log.
+   - Ramas : creacion de ramas, checkout, merge de ramas
+   - Remoto : Github, Gitlab.
+   - Git en entornos. Git Kraken, git scm
 
 - ENTORNOS DE DESARROLLO
 
