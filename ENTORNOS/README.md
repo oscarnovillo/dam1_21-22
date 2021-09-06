@@ -6,7 +6,7 @@
    - GIT, SVN , MERCURIAL
    - GITHUB, GITLAB
    - GIST
-   - Linea de comandos. git add, commit, status, log.
+   - Linea de comandos. git add, commit, status, log. git checkout -- . ,  git commit --ammend
    - Ramas : creacion de ramas, checkout, merge de ramas
    - Remoto : Github, Gitlab.
    - Git en entornos. Git Kraken, git scm
