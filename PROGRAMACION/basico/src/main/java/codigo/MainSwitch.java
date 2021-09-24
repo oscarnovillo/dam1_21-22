@@ -8,11 +8,13 @@ public class MainSwitch {
         int kaka = 5;
         String nombre = "PEPE";
 
-        switch(kaka){
-            case 2: {
+
+
+        switch (kaka) {
+            case 1: case 2: case 34:{
                 System.out.println("cuatro");
             }
-                break;
+            break;
             case 3:
                 System.out.println("cinco");
                 break;
@@ -24,8 +26,13 @@ public class MainSwitch {
 
         }
 
+        int i = 9;
 
-
+        if (i <= 5 && i>= 0) {
+            System.out.println();
+        } else if (i >= 7) {
+            System.out.println();
+        }
 
 
     }
