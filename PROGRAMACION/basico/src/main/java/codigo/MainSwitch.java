@@ -10,21 +10,24 @@ public class MainSwitch {
 
 
 
-        switch (kaka) {
-            case 1: case 2: case 34:{
-                System.out.println("cuatro");
-            }
-            break;
-            case 3:
-                System.out.println("cinco");
-                break;
-            case 5:
-                System.out.println("seis");
-                break;
-            default:
-                System.out.println("no encontrado");
-
+    switch (kaka) {
+        case 1:
+        case 2:
+        case 34: {
+            System.out.println("cuatro");
         }
+        break;
+        case 3:
+            System.out.println("cinco");
+            break;
+        case 5:
+            System.out.println("seis");
+            break;
+        default:
+            System.out.println("no encontrado");
+
+    }
+
 
         int i = 9;
 
