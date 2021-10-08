@@ -5,6 +5,7 @@
  */
 package quevedo.strings;
 
+import java.util.Locale;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
@@ -44,7 +45,7 @@ public class MainStrings {
         for (int i = 0; i < nombre.length(); i++) {
             char letra = nombre.charAt(i);
 
-            if (letra == 'A' || letra == 'E') {
+            if (letra <= 'A' || letra >= 'Z') {
                 letra += 32;
             }
             acumulado += letra;
@@ -63,7 +64,7 @@ public class MainStrings {
 
 
         // substring
-        String linea = "hola me llmamo maria victoriaasdd";
+        String linea = "hola me llmamo maria victomarriaasdd";
 
         System.out.println(linea.substring(5, 7));
         System.out.println(linea.substring(5));
@@ -100,6 +101,16 @@ public class MainStrings {
         System.out.println("cantidad " + cantidadLetras);
 
 
+        int indice = linea.indexOf("mar");
+
+        System.out.println(linea.substring(0,indice+3)+ " "+ linea.substring(indice+3));
+
+        System.out.println(linea.replaceFirst("mar","mar "));
+        System.out.println(linea.replace("mar","mar "));
+
+
+
+
         for (int i = linea.length() - 1; i >= 0; i--) {
             i = linea.lastIndexOf("a", i);
             System.out.println(i);
@@ -132,7 +143,7 @@ public class MainStrings {
         String miBlank = "__ ____ __ ____";
         nuevoNombre = new StringBuilder("__ ____ __ ____");
 
-        int indice = mi.indexOf("A");
+         indice = mi.indexOf("A");
 
 
         miBlank = miBlank.substring(0, indice) + "A"
@@ -149,6 +160,8 @@ public class MainStrings {
         }
 
         System.out.println(nuevoNombre.toString());
+
+        System.out.println("españa".toUpperCase());
     }
 
 
