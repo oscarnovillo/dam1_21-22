@@ -1,6 +1,7 @@
 package soluciones;
 
-public class Cesar {
+public class Vigenere {
+
 
     public static void main(String[] args) {
         String cadena = "NO TE levantes";
@@ -16,30 +17,21 @@ public class Cesar {
 
 
             if (Character.isLetter(cadena.charAt(i))) {
-                // conseguir clave
-                //clave es cte
+                clave =  claveString.charAt(i%claveString.length())-'a';
 
-                //convertir a cero
                 if (Character.isLowerCase(cadena.charAt(i))) {
-                   conversionCero = 'a';
+                    conversionCero = 'a';
                 } else if (Character.isUpperCase(cadena.charAt(i))) {
-                   conversionCero = 'A';
+                    conversionCero = 'A';
                 }
                 int posicion =  (cadena.charAt(i)-conversionCero);
-
-                //cifrar
-                char caracterCifrado = (char) ((posicion + clave+tamañoAlfabeto)%tamañoAlfabeto);
-
-                //descifrar
-                char caracterDesCifrado = (char) ((posicion - clave+tamañoAlfabeto)%tamañoAlfabeto);
-
-
-                //devolver a su ascii
-                cifrado.append((char) (caracterCifrado+conversionCero));
+                cifrado.append((char) ((posicion + clave+tamañoAlfabeto)%tamañoAlfabeto)+conversionCero);
 
             } else
                 cifrado.append(cadena.charAt(i));
         }
         System.out.println(cifrado);
+
+
     }
 }
