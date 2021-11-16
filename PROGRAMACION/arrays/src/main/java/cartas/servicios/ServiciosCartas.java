@@ -8,7 +8,7 @@ public class ServiciosCartas {
     {
         int cartas[] = new int[numeroCartas];
         for (int i = 0; i <numeroCartas; i++) {
-            cartas[i] = (i+1)%numeroCartasPalo;
+            cartas[i] = (i%numeroCartasPalo)+1;
         }
         barajar(cartas);
         return cartas;
@@ -18,10 +18,18 @@ public class ServiciosCartas {
     {
         //swap
         Random r = new Random();
-        r.nextInt(39);
 
+        int indice1= 0;
+        int indice2 = 0;
+        int swap=0;
 
-
+        for (int i = 0; i < 1000; i++) {
+            indice1 = r.nextInt(39);
+            indice2 = r.nextInt(39);
+            swap = cartas[indice1];
+            cartas[indice1] = cartas[indice2];
+            cartas[indice2] = swap;
+        }
     }
 
 
