@@ -1,11 +1,13 @@
 package cartas.examenBroncos;
 
-public class MainBroncos2 {
+public class MainBroncos2Opcion2 {
 
     public static void main(String[] args) {
-        int[] numeros = {-10, -8, -5, 1, 2, 3, 4, 6, 7, 9};
+
+        int numeros[] = {-10, -8, -5, 1, 2, 3, 4, 6, 7, 9};
         imprimirBaraja(numeros);
 
+        int swap = 0;
         if (correcto(numeros)) {
             encriptar(numeros);
 
@@ -19,13 +21,14 @@ public class MainBroncos2 {
 
 
     }
+
     public static void desencriptar(int[] numeros) {
         int swap = 0;
-        for (int i = numeros.length-1; i > 0 ; i--) {
-            while (numeros[i]<numeros[i-1]) {
+        for (int i = numeros.length - 1; i > 0; i--) {
+            while (numeros[i] < numeros[i - 1]) {
                 boolean salir = false;
                 swap = numeros[i];
-                int j = i-1;
+                int j = i - 1;
                 for (; j >= 0 && !salir; j--) {
 
                     if (swap < numeros[j]) {
@@ -97,5 +100,4 @@ public class MainBroncos2 {
 
         return ok;
     }
-
 }
