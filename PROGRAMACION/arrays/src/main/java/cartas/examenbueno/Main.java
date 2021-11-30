@@ -15,7 +15,7 @@ public class Main {
         ServiciosCartas serviciosCartas = new ServiciosCartas();
 
         int baraja[] = serviciosCartas.generarBaraja(40, 10);
-        int indiceBaraja=0;
+        int indiceBaraja = 0;
 
 
         System.out.println("Introduce el número de jugadores:");
@@ -24,23 +24,23 @@ public class Main {
         //repartir primera mano
 
         int[][] manos = new int[jugadores][3];
-        int [] mesa = new int[jugadores];
-        int [] cartasGanadas = new int[jugadores];
-        int []posicionesEmpate= new int[jugadores];
-        int ronda =1;
+        int[] mesa = new int[jugadores];
+        int[] cartasGanadas = new int[jugadores];
+        int[] posicionesEmpate = new int[jugadores];
+        int ronda = 1;
 
-        do{
-            System.out.println("reparto "+ronda);
+        do {
+            System.out.println("reparto " + ronda);
             ronda++;
 
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < jugadores; j++) {
-                    manos[j][i]  = baraja[indiceBaraja];
+                    manos[j][i] = baraja[indiceBaraja];
                     indiceBaraja++;
                 }
             }
             for (int j = 0; j < jugadores; j++) {
-                System.out.println("cartas jugador"+j+" son "+ Arrays.toString(manos[j]));
+                System.out.println("cartas jugador" + j + " son " + Arrays.toString(manos[j]));
             }
             // echar una carta 3 veces
             for (int i = 0; i < 3; i++) {
@@ -52,71 +52,84 @@ public class Main {
                     } while (manos[j][posicion] == 0);
                     mesa[j] = manos[j][posicion];
                     manos[j][posicion] = 0;
-                    System.out.println("carta de jugador "+j+ " es "+mesa[j]);
+                    System.out.println("carta de jugador " + j + " es " + mesa[j]);
 
                 }
 
                 //mirar mayor para ver ganador
-                int mayor=mesa[0];
+                int mayor = mesa[0];
                 int posicionMayor = 0;
 
 
-                boolean empate= false;
+                boolean empate = false;
                 for (int j = 1; j < mesa.length; j++) {
-                    if (mayor<mesa[j]) {
+                    if (mayor < mesa[j]) {
                         empate = false;
                         mayor = mesa[j];
                         posicionMayor = j;
-                    }
-                    else if (mayor==mesa[j]){
-                       empate = true;
+                    } else if (mayor == mesa[j]) {
+                        empate = true;
                     }
                 }
 
                 if (!empate) {
                     System.out.println("la baza se la lleva " + posicionMayor);
                     cartasGanadas[posicionMayor] += jugadores;
-                }
-                else
-                {
+                } else {
                     System.out.println("hay empate");
-                    int posicionEmpate = 0;
-                    Arrays.fill(posicionesEmpate,0);
+                    int numeroEmpates = 0;
+                    Arrays.fill(posicionesEmpate, 0);
                     for (int j = 0; j < mesa.length; j++) {
-                        if (mesa[j] == mayor)
-                        {
-                            posicionesEmpate[posicionEmpate] = j;
-                            posicionEmpate++;
+                        if (mesa[j] == mayor) {
+                            posicionesEmpate[numeroEmpates] = j;
+                            numeroEmpates++;
                         }
                     }
-                    int cartaMayorDesempate = -1;
-                    int posicionGanadorEmpate=0;
-                    for (int j = 0; j < posicionEmpate; j++) {
-                        int cartaEmpata = baraja[indiceBaraja];
-                        indiceBaraja++;
-                        System.out.println("carta sacada por jugaador"+posicionesEmpate[j] + " es "+cartaEmpata);
-                        if (cartaEmpata>cartaMayorDesempate)
-                        {
-                            posicionGanadorEmpate = j;
+                    int posicionGanadorEmpate = 0;
+                    empate = false;
+                    int contadorEmpates = 0;
+
+                    do {
+                        int cartaMayorDesempate = -1;
+                        contadorEmpates++;
+                        if (numeroEmpates <= (baraja.length - indiceBaraja)) {
+                            for (int j = 0; j < numeroEmpates; j++) {
+                                int cartaEmpata = baraja[indiceBaraja];
+                                indiceBaraja++;
+
+                                System.out.println("carta sacada por jugaador" + posicionesEmpate[j] + " es " + cartaEmpata);
+                                if (cartaEmpata > cartaMayorDesempate) {
+                                    cartaMayorDesempate = cartaEmpata;
+                                    posicionGanadorEmpate = j;
+                                    empate = false;
+                                } else if (cartaEmpata == cartaMayorDesempate) {
+                                    empate = true;
+                                }
+                            }
                         }
-                    }
+                        else{
+                            posicionGanadorEmpate = r.nextInt(numeroEmpates);
+                            empate = false;
+                            System.out.println("se tira una moneda");
+                        }
+                    } while (empate);
                     System.out.println("la baza se la lleva " + posicionesEmpate[posicionGanadorEmpate]);
-                    cartasGanadas[posicionMayor] += jugadores+posicionEmpate;
+                    cartasGanadas[posicionMayor] += jugadores + (numeroEmpates * contadorEmpates);
                 }
             }
-        }while (jugadores*3<=40-indiceBaraja);
+        } while (jugadores * 3 <= 40 - indiceBaraja);
 
-        int mayor=cartasGanadas[0];
+        int mayor = cartasGanadas[0];
         int posicionMasCartas = 0;
         for (int j = 1; j < cartasGanadas.length; j++) {
-            if (mayor<cartasGanadas[j]) {
+            if (mayor < cartasGanadas[j]) {
                 mayor = cartasGanadas[j];
                 posicionMasCartas = j;
             }
         }
 
         System.out.println(Arrays.toString(cartasGanadas));
-        System.out.println("el ganador es "+posicionMasCartas);
+        System.out.println("el ganador es " + posicionMasCartas);
 
     }
 }
