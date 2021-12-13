@@ -1,7 +1,7 @@
-package servicios;
+package servicios_alejandro;
 
-import dao.DaoPersona;
-import modelo.Persona;
+import personas.dao.DaoPersona;
+import personas.dao.modelo.Persona;
 
 public class ServiciosPersonas {
 

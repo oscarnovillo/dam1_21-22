@@ -1,7 +1,7 @@
-package ui;
+package personas.ui.ui;
 
-import dao.DaoPersona;
-import modelo.Persona;
+import personas.dao.DaoPersona;
+import personas.dao.modelo.Persona;
 
 import java.util.Arrays;
 

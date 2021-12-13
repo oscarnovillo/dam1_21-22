@@ -6,7 +6,7 @@ public class ServiciosCartas {
 
     public int[] generarBaraja(int numeroCartas,int numeroCartasPalo)
     {
-        int cartas[] = new int[numeroCartas];
+        int []cartas = new int[numeroCartas];
         for (int i = 0; i <numeroCartas; i++) {
             cartas[i] = (i%numeroCartasPalo)+1;
         }

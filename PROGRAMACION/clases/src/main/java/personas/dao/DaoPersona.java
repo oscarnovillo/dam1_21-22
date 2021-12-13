@@ -1,6 +1,6 @@
-package dao;
+package personas.dao;
 
-import modelo.Persona;
+import personas.dao.modelo.Persona;
 
 import java.util.Arrays;
 
