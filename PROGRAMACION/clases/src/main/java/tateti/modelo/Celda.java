@@ -1,5 +1,7 @@
 package tateti.modelo;
 
+import java.util.Objects;
+
 public class Celda {
 
     private int x;
@@ -24,6 +26,21 @@ public class Celda {
         if (valor == null)
             return " ";
         return valor;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Celda celda = (Celda) o;
+        return x == celda.x && y == celda.y
+                && Objects.equals(valor, celda.valor);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y, valor);
     }
 
     public void setValor(String valor) {

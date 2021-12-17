@@ -15,15 +15,15 @@ public class Main {
 
         System.out.println(dao.getTablero().toString());
 
-do {
+        do {
 
-    if (!dao.setCelda(0, 0, ValoresCelda.X)) {
-        System.out.println("elige otra celda");
-    }
-    dao.getCelda(0, 0);
-// imprimir tablero
+            if (!dao.setCelda(0, 0, ValoresCelda.X)) {
+                System.out.println("elige otra celda");
+            }
+            dao.getCelda(0, 0);
+            // imprimir tablero
 
-}while(!dao.tresLinea() && dao.hayCeldaLibre());
+        } while (!dao.tresLinea() && dao.hayCeldaLibre());
 
 
     }
