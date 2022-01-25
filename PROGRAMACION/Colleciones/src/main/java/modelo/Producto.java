@@ -6,15 +6,16 @@ public class Producto {
 
     private double precio;
     private String nombre;
-
-    public Producto(double precio, String nombre) {
-
-        this.precio = precio;
-        this.nombre = nombre;
-    }
+    private int stock;
 
     public Producto(String nombre) {
         this.nombre = nombre;
+    }
+
+    public Producto(double precio, String nombre, int stock) {
+        this.precio = precio;
+        this.nombre = nombre;
+        this.stock = stock;
     }
 
     public double getPrecio() {
@@ -25,6 +26,12 @@ public class Producto {
         this.precio = precio;
     }
 
+
+    public void aumentarStock(int cantidad)
+    {
+        this.stock += cantidad;
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -33,12 +40,12 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    @Override
-    public String toString() {
-        return "Producto{" +
-                "precio=" + precio +
-                ", nombre='" + nombre + '\'' +
-                '}';
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 
     @Override
@@ -46,11 +53,20 @@ public class Producto {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Producto producto = (Producto) o;
-        return nombre.equals(producto.nombre);
+        return nombre.equalsIgnoreCase(producto.nombre);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nombre);
+        return Objects.hash(nombre.toLowerCase());
+    }
+
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "precio=" + precio +
+                ", nombre='" + nombre + '\'' +
+                ", stock=" + stock +
+                '}';
     }
 }

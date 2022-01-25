@@ -3,6 +3,7 @@ package ui;
 import modelo.Producto;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,10 +20,10 @@ public class MainListas {
         }
 
 
-        lista.add(new Producto(9, "pantene miel limon y ciruelas"));
-        lista.add(new Producto(7, "H&S"));
-        lista.add(new Producto(9, null));
-        lista.add(new Producto(90, "Cream Loreal Antiarrugas"));
+        lista.add(new Producto(9, "pantene miel limon y ciruelas",8));
+        lista.add(new Producto(7, "H&S",9));
+        lista.add(new Producto(9, "kkk",0));
+        lista.add(new Producto(90, "Cream Loreal Antiarrugas",7));
 
         if (lista.contains(new Producto("nombre"))) {
             System.out.println("Si Lo contiene");
@@ -36,6 +37,19 @@ public class MainListas {
                 break;
             }
         }
+
+
+
+        List<Producto> lista3 = lista.stream().collect(Collectors.toUnmodifiableList());
+        lista3 = Collections.unmodifiableList(lista);
+;
+        lista3.get(0).setPrecio(999999);
+
+        lista.forEach(System.out::println);
+
+
+        String nombreaBorrar;
+
 
         //lista.remove(new Producto("H&S"));
 //
