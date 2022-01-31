@@ -3,6 +3,8 @@ package dao;
 import modelo.Producto;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class DaoProducto {
 
@@ -13,6 +15,14 @@ public class DaoProducto {
         this.productos = new ArrayList<>();
     }
 
+
+
+    public List<Producto> verProductos()
+    {
+        return productos.stream()
+                .map(producto -> new Producto(producto.getPrecio(),producto.getNombre(), producto.getStock()))
+                .collect(Collectors.toUnmodifiableList());
+    }
 
     public boolean addProducto(Producto p)
     {
