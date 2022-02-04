@@ -1,10 +1,6 @@
 package ui;
 
-import common.MiScanner;
-
-import java.nio.DoubleBuffer;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import ui.common.MiScanner;
 
 public class MainErrores {
 
@@ -20,6 +16,7 @@ public class MainErrores {
 
         System.out.println(d);
         System.out.println(f);
+
 
 
     }

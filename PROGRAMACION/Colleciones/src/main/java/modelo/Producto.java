@@ -8,6 +8,7 @@ public class Producto {
     private String nombre;
     private int stock;
 
+
     public Producto(String nombre) {
         this.nombre = nombre;
     }
@@ -64,7 +65,7 @@ public class Producto {
     @Override
     public String toString() {
         return "Producto{" +
-                "precio=" + precio +
+                "precio=" + precio + " "+
                 ", nombre='" + nombre + '\'' +
                 ", stock=" + stock +
                 '}';

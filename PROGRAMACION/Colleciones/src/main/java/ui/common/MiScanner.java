@@ -1,4 +1,4 @@
-package common;
+package ui.common;
 
 import java.util.Scanner;
 
@@ -22,6 +22,8 @@ public class MiScanner {
 
         return i;
     }
+
+
 
     public double dameDouble(String mensaje)
     {

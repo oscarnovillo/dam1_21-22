@@ -2,7 +2,6 @@ package ui;
 
 import modelo.Cliente;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 public class MainMap {
