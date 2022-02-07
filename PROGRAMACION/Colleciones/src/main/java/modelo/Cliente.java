@@ -36,6 +36,7 @@ public class Cliente {
     private Cliente() {
         monederos = new HashSet<>();
         carrito = new ArrayList<>();
+        comprasAntiguas = new ArrayList<>();
 
 
     }
@@ -48,6 +49,7 @@ public class Cliente {
     public Cliente(String dni, String nombre) {
         this(dni);
         this.nombre = nombre;
+
     }
 
     public String getDni() {
