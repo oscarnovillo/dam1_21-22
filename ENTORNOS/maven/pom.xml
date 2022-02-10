@@ -21,10 +21,12 @@
 
 
     <dependencies>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.22</version>
+
         </dependency>
         <dependency>
             <groupId>io.vavr</groupId>
@@ -262,19 +264,7 @@
 
         <plugins>
 
-            <plugin>
-                <artifactId>maven-clean-plugin</artifactId>
-                <version>3.1.0</version>
-                <executions>
-                    <execution>
-                        <id>default-clean</id>
-                        <phase>clean</phase>
-                        <goals>
-                            <goal>clean</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -347,7 +337,7 @@
 <!--                                </resource>-->
                                 <resource>
                                     <targetPath>${project.build.directory}/exe/jre</targetPath>
-                                    <directory>C:\tools\jdk-11.0.5</directory>
+                                    <directory>C:\Program Files\Java\jdk-11.0.11</directory>
                                 </resource>
                                 <resource>
                                     <targetPath>${project.build.directory}/exe</targetPath>
@@ -396,26 +386,7 @@
             </plugin>
 
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-                <!--                <configuration>-->
-                <!--                    <annotationProcessorPaths>-->
 
-                <!--                        &lt;!&ndash; SOLUTION &ndash;&gt;-->
-                <!--                        <path>-->
-                <!--                            <groupId>org.projectlombok</groupId>-->
-                <!--                            <artifactId>lombok</artifactId>-->
-                <!--                            <version>1.18.20</version>-->
-                <!--                        </path>-->
-
-
-                <!--                    </annotationProcessorPaths>-->
-                <!--                    <source>${maven.compiler.source}</source>-->
-                <!--                    <target>${maven.compiler.target}</target>-->
-                <!--                </configuration>-->
-            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -467,6 +438,13 @@
                         </goals>
                         <phase>compile</phase>
                     </execution>
+                    <execution>
+                        <id>clean</id>
+                        <goals>
+                            <goal>validate</goal>
+                        </goals>
+                        <phase>clean</phase>
+                    </execution>
                 </executions>
             </plugin>
             <!-- generar javadoc -->
@@ -475,7 +453,7 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.3.0</version>
                 <configuration>
-                    <javadocExecutable>C:\tools\jdk-11.0.5\bin\javadoc.exe</javadocExecutable>
+                    <javadocExecutable>C:\Program Files\Java\jdk-11.0.11\bin\javadoc.exe</javadocExecutable>
                 </configuration>
                 <executions>
                     <execution>

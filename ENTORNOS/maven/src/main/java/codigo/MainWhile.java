@@ -8,6 +8,9 @@ public class MainWhile {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
+        Ejercicio10 e = new Ejercicio10();
+        e.dameNumeroAleatorio();
+
         int i = 0;
 
         while (i <= 5) {
