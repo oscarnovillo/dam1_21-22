@@ -2,10 +2,12 @@ package ui;
 
 import lombok.SneakyThrows;
 import modelo.Persona;
-import java.io.IOException;
+
 import java.util.Properties;
 
 public class Main {
+
+    public static final String CONFIG_TESTING = "testing";
 
     public static void main(String[] args) {
 
@@ -21,7 +23,6 @@ public class Main {
         m.testProperties();
 
 
-
     }
 
     @SneakyThrows
@@ -29,6 +30,9 @@ public class Main {
         Properties pro = new Properties();
         pro.load(this.getClass().getClassLoader().getResourceAsStream("config.properties"));
         // pro.stringPropertyNames().stream().forEach(System.out::println);
+
+        System.out.println(pro.get(CONFIG_TESTING));
+
         pro.entrySet().stream().map(objectObjectEntry -> objectObjectEntry.getKey() + " "
                 + objectObjectEntry.getValue()).forEach(System.out::println);
     }
