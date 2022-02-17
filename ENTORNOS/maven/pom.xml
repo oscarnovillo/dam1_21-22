@@ -199,6 +199,13 @@
                 <env>test</env>
             </properties>
         </profile>
+        <profile>
+            <id>pro</id>
+
+            <properties>
+                <env>pro</env>
+            </properties>
+        </profile>
 
     </profiles>
 
@@ -424,27 +431,27 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
                 <executions>
-                    <execution>
-                        <id>format</id>
-                        <goals>
-                            <goal>format</goal>
-                        </goals>
-                        <phase>process-resources</phase>
-                    </execution>
-                    <execution>
-                        <id>validate</id>
-                        <goals>
-                            <goal>validate</goal>
-                        </goals>
-                        <phase>compile</phase>
-                    </execution>
-                    <execution>
-                        <id>clean</id>
-                        <goals>
-                            <goal>validate</goal>
-                        </goals>
-                        <phase>clean</phase>
-                    </execution>
+<!--                    <execution>-->
+<!--                        <id>format</id>-->
+<!--                        <goals>-->
+<!--                            <goal>format</goal>-->
+<!--                        </goals>-->
+<!--                        <phase>process-resources</phase>-->
+<!--                    </execution>-->
+<!--                    <execution>-->
+<!--                        <id>validate</id>-->
+<!--                        <goals>-->
+<!--                            <goal>validate</goal>-->
+<!--                        </goals>-->
+<!--                        <phase>compile</phase>-->
+<!--                    </execution>-->
+<!--                    <execution>-->
+<!--                        <id>clean</id>-->
+<!--                        <goals>-->
+<!--                            <goal>validate</goal>-->
+<!--                        </goals>-->
+<!--                        <phase>clean</phase>-->
+<!--                    </execution>-->
                 </executions>
             </plugin>
             <!-- generar javadoc -->

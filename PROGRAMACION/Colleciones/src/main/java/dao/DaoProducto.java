@@ -25,7 +25,7 @@ public boolean existeProducto(String nombre)
     public List<Producto> verProductos()
     {
         return BD.productos.stream()
-                .map(producto -> new Producto(producto.getPrecio(),producto.getNombre(), producto.getStock()))
+                .map(producto -> producto.clonar())
                 .collect(Collectors.toUnmodifiableList());
     }
 

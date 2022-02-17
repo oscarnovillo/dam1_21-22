@@ -10,6 +10,8 @@ public class Cliente {
     private String dni;
     private String nombre;
     private Set<Monedero> monederos;
+
+    private List<Ingrediente> alergenos;
     private List<LineaCompra> carrito;
     private List<List<LineaCompra>> comprasAntiguas;
 

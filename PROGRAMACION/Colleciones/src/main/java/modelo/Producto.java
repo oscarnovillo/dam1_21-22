@@ -1,60 +1,55 @@
 package modelo;
 
-import java.util.Objects;
+import lombok.Data;
 
-public class Producto {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
+
+@Data
+public class Producto implements Comparable<Producto>, Clonable<Producto> {
 
     private double precio;
     private String nombre;
     private int stock;
+    private List<Ingrediente> ingredientes;
 
+    public Producto(double precio, String nombre, int stock, List<Ingrediente> ingredientes) {
+        this.precio = precio;
+        this.nombre = nombre;
+        this.stock = stock;
+        this.ingredientes = ingredientes;
+    }
+
+    public Producto(double precio, String nombre, int stock) {
+        this();
+        this.precio = precio;
+        this.nombre = nombre;
+        this.stock = stock;
+    }
+
+    private Producto() {
+        ingredientes = new ArrayList<>();
+    }
 
     public Producto(String nombre) {
         this.nombre = nombre;
     }
 
-    public Producto(double precio, String nombre, int stock) {
-        this.precio = precio;
-        this.nombre = nombre;
-        this.stock = stock;
-    }
 
-    public double getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(double precio) {
-        this.precio = precio;
-    }
-
-
-    public void aumentarStock(int cantidad)
-    {
+    public void aumentarStock(int cantidad) {
         this.stock += cantidad;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public int getStock() {
-        return stock;
-    }
-
-    public void setStock(int stock) {
-        this.stock = stock;
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Producto producto = (Producto) o;
-        return nombre.equalsIgnoreCase(producto.nombre);
+        return nombre.equals(producto.nombre);
     }
 
     @Override
@@ -62,12 +57,19 @@ public class Producto {
         return Objects.hash(nombre.toLowerCase());
     }
 
+
     @Override
-    public String toString() {
-        return "Producto{" +
-                "precio=" + precio + " "+
-                ", nombre='" + nombre + '\'' +
-                ", stock=" + stock +
-                '}';
+    public int compareTo(Producto producto) {
+        return this.getNombre().toLowerCase()
+                .compareTo(producto.getNombre().toLowerCase());
+    }
+
+    @Override
+    public Producto clonar() {
+        return new Producto(this.precio, this.nombre, this.stock
+                , this.ingredientes
+                    .stream()
+                    .map(Ingrediente::clonar)
+                    .collect(Collectors.toUnmodifiableList()));
     }
 }
