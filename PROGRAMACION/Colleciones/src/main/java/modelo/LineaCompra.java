@@ -1,10 +1,13 @@
 package modelo;
 
+import lombok.Data;
+
+@Data
 public class LineaCompra {
 
-    private Producto producto;
+    private final Producto producto;
 
-    private int cantidad;
+    private final int cantidad;
 
 
 }

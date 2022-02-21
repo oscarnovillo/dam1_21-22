@@ -11,7 +11,7 @@ import java.util.LinkedHashMap;
 public class BD {
 
     static LinkedHashMap<String, Cliente> clientes = new LinkedHashMap<>();
-    static ArrayList<Producto> productos = new ArrayList<>();
+    public static ArrayList<Producto> productos = new ArrayList<>();
 
     static {
         productos.add(new Producto(12,"",12));

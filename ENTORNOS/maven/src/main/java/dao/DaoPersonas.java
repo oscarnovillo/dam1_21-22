@@ -23,10 +23,8 @@ public class DaoPersonas {
         return personas.add(p);
     }
 
-
     public List<Persona> getPersonas() {
         return personas.stream().collect(Collectors.toUnmodifiableList());
     }
-
 
 }

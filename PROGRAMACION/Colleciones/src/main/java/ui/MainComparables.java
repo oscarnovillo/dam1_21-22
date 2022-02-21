@@ -1,5 +1,7 @@
 package ui;
 
+import dao.BD;
+import dao.DaoProducto;
 import modelo.Cliente;
 import modelo.Producto;
 import modelo.ProductoCaducable;
@@ -18,9 +20,9 @@ public class MainComparables {
 
 
         Producto p = new Producto(10
-                , "cono", 10);
-        Producto p1 = new Producto(10
-                , "cona", 10);
+                , "perenne", 10);
+        Producto productoCaducable = new ProductoCaducable(10
+                , "caduca", 10,LocalDateTime.now());
 
         List<Producto> productos = new ArrayList<>();
         Random r = new Random();
@@ -37,14 +39,23 @@ public class MainComparables {
             p2.setNombre(name);
             productos.add(p2);
         }
+        BD.productos.add(p);
+        BD.productos.add(productoCaducable);
+
+
         //productos.forEach(System.out::println);
 
-        System.out.println("OTRA LISTA");
-        //productos.stream().sorted().forEach(System.out::println);
+        DaoProducto dao = new DaoProducto();
 
-        Cliente c = new Cliente("ff");
+        System.out.println(dao.getProducto(new Producto("perenne")));
+        System.out.println(dao.getProducto(new Producto("caduca")));
 
-        System.out.println(p.compareTo(p1));
+//        System.out.println("OTRA LISTA");
+//        //productos.stream().sorted().forEach(System.out::println);
+//
+//        Cliente c = new Cliente("ff");
+//
+//        System.out.println(p.compareTo(productoCaducable));
 
     }
 }

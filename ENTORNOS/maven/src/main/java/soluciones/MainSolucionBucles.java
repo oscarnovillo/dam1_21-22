@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 public class MainSolucionBucles {
 
-
     public static void main(String[] args) throws InterruptedException {
         Scanner sc = new Scanner(System.in);
         Random r = new Random();
@@ -99,7 +98,6 @@ public class MainSolucionBucles {
                 }
             }
         }
-
 
     }
 }

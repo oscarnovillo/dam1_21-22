@@ -22,7 +22,6 @@ public class Main {
         Main m = new Main();
         m.testProperties();
 
-
     }
 
     @SneakyThrows
@@ -33,8 +32,9 @@ public class Main {
 
         System.out.println(pro.get(CONFIG_TESTING));
 
-        pro.entrySet().stream().map(objectObjectEntry -> objectObjectEntry.getKey() + " "
-                + objectObjectEntry.getValue()).forEach(System.out::println);
+        pro.entrySet().stream()
+                .map(objectObjectEntry -> objectObjectEntry.getKey() + " " + objectObjectEntry.getValue())
+                .forEach(System.out::println);
     }
 
 }

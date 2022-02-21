@@ -1,9 +1,6 @@
 package modelo;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Cliente {
 
@@ -14,6 +11,10 @@ public class Cliente {
     private List<Ingrediente> alergenos;
     private List<LineaCompra> carrito;
     private List<List<LineaCompra>> comprasAntiguas;
+
+    public List<Ingrediente> getAlergenos() {
+        return alergenos;
+    }
 
     public List<LineaCompra> getCarrito() {
         return carrito;
@@ -67,6 +68,19 @@ public class Cliente {
         return monederos;
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cliente cliente = (Cliente) o;
+        return dni.equals(cliente.dni);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(dni);
+    }
 
     @Override
     public String toString() {

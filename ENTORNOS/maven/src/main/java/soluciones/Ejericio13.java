@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class Ejericio13 {
 
-
     public void ejecutar(Scanner sc) {
         int precioHora = 5;
 
@@ -18,6 +17,5 @@ public class Ejericio13 {
         System.out.println("horas " + sueldoSemanal);
 
     }
-
 
 }

@@ -38,7 +38,8 @@ class DaoPersonasTest {
         Properties pro = new Properties();
         pro.load(this.getClass().getClassLoader().getResourceAsStream("config.properties"));
         // pro.stringPropertyNames().stream().forEach(System.out::println);
-        pro.entrySet().stream().map(objectObjectEntry -> objectObjectEntry.getKey() + " "
-                + objectObjectEntry.getValue()).forEach(System.out::println);
+        pro.entrySet().stream()
+                .map(objectObjectEntry -> objectObjectEntry.getKey() + " " + objectObjectEntry.getValue())
+                .forEach(System.out::println);
     }
 }

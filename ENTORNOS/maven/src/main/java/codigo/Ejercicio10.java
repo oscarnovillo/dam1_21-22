@@ -3,7 +3,6 @@ package codigo;
 import java.util.Random;
 import java.util.Scanner;
 
-
 /**
  * sñkdlfjñlskdfjñlks sdf jklhsdfjkhsdkljfh skljdfh sk akjñsdf d sdf
  *
@@ -16,12 +15,13 @@ public class Ejercicio10 {
         Scanner sc = new Scanner(System.in);
     }
 
-
     /**
      *
      *
-     * @param numeroNumeros esto es el ndni del cliente que hace no se cuanto
-     * @param sc este eparam es la leche
+     * @param numeroNumeros
+     *            esto es el ndni del cliente que hace no se cuanto
+     * @param sc
+     *            este eparam es la leche
      *
      */
     public void media(int numeroNumeros, Scanner sc) {
@@ -43,6 +43,5 @@ public class Ejercicio10 {
         Random random = new Random();
         return random.nextInt(100) + 1;
     }
-
 
 }

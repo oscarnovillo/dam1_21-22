@@ -8,9 +8,7 @@ public class Calculadora {
         Calculadora c = new Calculadora();
         c.suma(sc);
 
-
     }
-
 
     public void suma(Scanner sc) {
         // pedir numeros
