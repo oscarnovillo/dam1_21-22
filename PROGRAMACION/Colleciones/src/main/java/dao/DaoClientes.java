@@ -2,7 +2,6 @@ package dao;
 
 import modelo.Cliente;
 import modelo.Clonable;
-import modelo.Producto;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -22,8 +21,7 @@ public class DaoClientes extends DaoBase {
 
     public List<Cliente> getClientes()
     {
-        return dameListaInmutableClonada(BD.clientes.values().stream()
-                .map(cliente -> (Clonable)cliente).collect(Collectors.toList()));
+        return dameListaInmutableClonada(BD.clientes.values());
     }
 
 

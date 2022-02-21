@@ -229,20 +229,20 @@
                     </reportSet>
                 </reportSets>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.3.0</version>
-                <reportSets>
-                    <reportSet>
-                        <id>default</id>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-javadoc-plugin</artifactId>-->
+<!--                <version>3.3.0</version>-->
+<!--                <reportSets>-->
+<!--                    <reportSet>-->
+<!--                        <id>default</id>-->
 
-                        <reports>
-                            <report>javadoc</report>
-                        </reports>
-                    </reportSet>
-                </reportSets>
-            </plugin>
+<!--                        <reports>-->
+<!--                            <report>javadoc</report>-->
+<!--                        </reports>-->
+<!--                    </reportSet>-->
+<!--                </reportSets>-->
+<!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
@@ -311,6 +311,27 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                                <configuration>
+                                    <annotationProcessorPaths>
+
+                                        <!-- SOLUTION -->
+                                        <path>
+                                            <groupId>org.projectlombok</groupId>
+                                            <artifactId>lombok</artifactId>
+                                            <version>1.18.20</version>
+                                        </path>
+
+
+                                    </annotationProcessorPaths>
+                                    <source>${maven.compiler.source}</source>
+                                    <target>${maven.compiler.target}</target>
+                                </configuration>
             </plugin>
 
             <plugin>
@@ -455,23 +476,23 @@
                 </executions>
             </plugin>
             <!-- generar javadoc -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.3.0</version>
-                <configuration>
-                    <javadocExecutable>C:\Program Files\Java\jdk-11.0.11\bin\javadoc.exe</javadocExecutable>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>javadoc</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-javadoc-plugin</artifactId>-->
+<!--                <version>3.3.0</version>-->
+<!--                <configuration>-->
+<!--                    <javadocExecutable>C:\tools\jdk-11.0.5\bin\javadoc.exe</javadocExecutable>-->
+<!--                </configuration>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>javadoc</id>-->
+<!--                        <phase>package</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>jar</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
 
             <plugin>
                 <groupId>com.akathist.maven.plugins.launch4j</groupId>

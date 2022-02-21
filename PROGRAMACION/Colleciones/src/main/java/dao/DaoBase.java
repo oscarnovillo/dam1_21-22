@@ -13,7 +13,7 @@ abstract class DaoBase {
 
     private BD bd;
 
-    protected  <T> List<T> dameListaInmutableClonada(Collection<Clonable<T>> collection)
+    protected  <T> List<T> dameListaInmutableClonada(Collection<? extends Clonable<T>> collection)
     {
         return collection.stream()
                 .map(Clonable::clonar)

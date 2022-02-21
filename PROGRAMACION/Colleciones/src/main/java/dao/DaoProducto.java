@@ -3,6 +3,8 @@ package dao;
 import modelo.Clonable;
 import modelo.Producto;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,8 +29,7 @@ public class DaoProducto extends DaoBase {
 
 
     public List<Producto> verProductos() {
-        return  dameListaInmutableClonada(BD.productos.stream()
-                .map(producto -> (Clonable)producto).collect(Collectors.toList()));
+        return dameListaInmutableClonada(BD.productos);
     }
 
     public boolean addProducto(Producto p) {
