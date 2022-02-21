@@ -2,7 +2,7 @@ package modelo;
 
 import java.util.*;
 
-public class Cliente {
+public class Cliente implements  Clonable<Cliente> {
 
     private String dni;
     private String nombre;
@@ -87,5 +87,10 @@ public class Cliente {
         return "Cliente{" +
                 "dni='" + dni + '\'' + nombre +
                 '}';
+    }
+
+    @Override
+    public Cliente clonar() {
+        return null;
     }
 }

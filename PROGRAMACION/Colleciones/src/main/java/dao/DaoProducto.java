@@ -1,11 +1,12 @@
 package dao;
 
+import modelo.Clonable;
 import modelo.Producto;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class DaoProducto {
+public class DaoProducto extends DaoBase {
 
 
     public DaoProducto() {
@@ -15,7 +16,7 @@ public class DaoProducto {
     public Producto getProducto(Producto p) {
         int indice = BD.productos.indexOf(p);
         if (indice>0)
-            return BD.productos.get(indice).clonar();
+            return dameElemento(BD.productos.get(indice));
         else
             return null;
     }
@@ -26,9 +27,8 @@ public class DaoProducto {
 
 
     public List<Producto> verProductos() {
-        return BD.productos.stream()
-                .map(producto -> producto.clonar())
-                .collect(Collectors.toUnmodifiableList());
+        return  dameListaInmutableClonada(BD.productos.stream()
+                .map(producto -> (Clonable)producto).collect(Collectors.toList()));
     }
 
     public boolean addProducto(Producto p) {

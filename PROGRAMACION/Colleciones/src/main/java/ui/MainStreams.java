@@ -1,5 +1,6 @@
 package ui;
 
+
 import modelo.Cliente;
 import modelo.LineaCompra;
 import modelo.Producto;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class MainStreams {
 
@@ -22,6 +24,7 @@ public class MainStreams {
         for (int i = 0; i < 100; i++) {
             Producto p2 = new Producto(r.nextInt(100)
                     , "cono", r.nextInt(100));
+
             String name = ((char) (r.nextInt(26) + 'a')) + "ono";
             if (r.nextBoolean()) {
 
@@ -80,21 +83,15 @@ public class MainStreams {
         b = productos.stream().allMatch(producto -> producto.getStock() > 0);
 
         System.out.println(b);
-        Cliente c = null;
+        Cliente c = new Cliente("jj","jj");
 
-//        productos.stream()
-//                .filter(producto -> {
-//                    boolean encontrado = false;
-//                    for (int i = 0; i < c.getAlergenos().size(); i++) {
-//                        int finalI = i;
-//                        encontrado = producto.getIngredientes()
-//                                .stream()
-//                                .anyMatch(in -> in.equals(c.getAlergenos().get(finalI)));
-//
-//                    }
-//                return encontrado;
-//                })
-//                .collect(Collectors.toList());
+        Cliente c1 = new Cliente("jj","jj");
+        productos.stream()
+                .filter(producto ->
+                    producto.getIngredientes().stream()
+                            .noneMatch(ingrediente -> c1.getAlergenos().contains(ingrediente))
+                    )
+                .collect(Collectors.toList());
 
         c= new Cliente("1","mmm");
         c.getComprasAntiguas().add(new ArrayList<>());
@@ -115,6 +112,9 @@ public class MainStreams {
                         lineaCompras.stream()
                                 .mapToDouble(value -> value.getProducto().getPrecio() * value.getCantidad()))
                 .sum());
+
+
+
 
 
     }

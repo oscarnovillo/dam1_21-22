@@ -18,6 +18,7 @@ public class ServiciosProductos {
 
     public List<Producto> getProductos() {
         DaoProducto dao = new DaoProducto();
+
         return dao.verProductos();
     }
 }
