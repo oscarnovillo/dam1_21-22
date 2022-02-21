@@ -7,10 +7,7 @@ import modelo.Producto;
 import modelo.ProductoCaducable;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class MainStreams {
@@ -114,8 +111,11 @@ public class MainStreams {
                 .sum());
 
 
-
-
+        c.getComprasAntiguas().stream().flatMap(Collection::stream)
+                .collect(Collectors.groupingBy(LineaCompra::getProducto,Collectors.summingDouble(LineaCompra::getCantidad)))
+                .entrySet().stream().sorted(Map.Entry.<Producto,Double>comparingByValue().reversed())
+                .map(productoDoubleEntry ->productoDoubleEntry.getKey()+ " "+productoDoubleEntry.getValue())
+                .forEach(System.out::println);
 
     }
 }
