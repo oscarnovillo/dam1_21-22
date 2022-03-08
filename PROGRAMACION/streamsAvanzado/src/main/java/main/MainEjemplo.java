@@ -2,12 +2,14 @@ package main;
 
 import com.github.javafaker.Faker;
 import pedidos.dao.modelo.Cliente;
+import pedidos.dao.modelo.Cuenta;
 import pedidos.servicios.ServiciosPedido;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
+import java.util.function.ToIntFunction;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.counting;
@@ -16,15 +18,29 @@ public class MainEjemplo {
 
     public static void main(String[] args) {
 
+        int j = 9;
+        int i = (j<0) ? 9 : 2;
+        System.out.println(i);
 
         setupClienteCuentas();
         ServiciosPedido sp = new ServiciosPedido();
 
         List<Cliente> clientes = sp.getTodosClientes();
+
+        Cliente c = clientes.stream()
+                .filter(cliente -> cliente.getNombre().equals("oscar"))
+                .findFirst().orElse(null);
+
         // Cliente con mas cuentas
         Optional<Cliente> opCli = clientes.stream()
-                .reduce((cliente, cliente2) ->
-                        cliente.getCuentas().size() >= cliente2.getCuentas().size() ? cliente : cliente2);
+                .reduce((cliente, cliente23) ->
+                        cliente.getCuentas().size() >= cliente23.getCuentas().size()
+                                ? cliente23 : cliente);
+
+        clientes.stream()
+                .sorted(Comparator.comparingInt(cliente -> cliente.getCuentas().size()))
+                        .findFirst();
+
 
         opCli.ifPresent(cliente -> {
             System.out.println(cliente);
@@ -33,7 +49,9 @@ public class MainEjemplo {
         opCli.orElseGet(null);
 
 
-        clientes.stream().max(Comparator.comparingInt(o -> o.getCuentas().size())).orElseGet(null);
+        clientes.stream()
+                .max(Comparator.comparingInt(o -> o.getCuentas().size()))
+                .orElseGet(null);
 
 
         // Clientes agrupados por el numero de cuentas
@@ -57,13 +75,15 @@ public class MainEjemplo {
 
         double mediaCuentas = clientes.stream()
                 .flatMap(cliente -> cliente.getCuentas().stream())
-                .mapToInt(value -> value.getSaldo())
+                .mapToInt(Cuenta::getSaldo)
                 .average().orElse(0);
         System.out.println(mediaCuentas);
 
         //clientes que tienen todas las cuentas mayores a la media de dinero en cuenta.
-        clientes.stream().filter(cliente -> !cliente.getCuentas().isEmpty()
-                        && cliente.getCuentas().stream().allMatch(cuenta -> cuenta.getSaldo() >= mediaCuentas))
+        clientes.stream().filter(cliente ->
+                        !cliente.getCuentas().isEmpty()
+                          && cliente.getCuentas().stream()
+                                .allMatch(cuenta -> cuenta.getSaldo() >= mediaCuentas))
                 .forEach(cliente -> {
                     System.out.println(cliente);
                     System.out.println("hols");
@@ -71,7 +91,11 @@ public class MainEjemplo {
                 });
 
         //numero de clientes según dominio del correo
-        System.out.println(clientes.stream().collect(Collectors.groupingBy(cliente -> cliente.getEmail().substring(cliente.getEmail().indexOf("@") + 1), counting())).toString());
+        System.out.println(clientes.stream()
+                .collect(Collectors
+                        .groupingBy(cliente ->
+                                cliente.getEmail().substring(cliente.getEmail().indexOf("@") + 1)
+                                , counting())).toString());
 
 
     }

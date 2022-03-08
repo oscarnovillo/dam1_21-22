@@ -17,6 +17,8 @@ public class MainMinimos {
     list.add("Lion");list.add("Giraffe");list.add("Lemur");
 
 
+
+
     List<String> nueva = new ArrayList<>();
     for (String s : list)
     {

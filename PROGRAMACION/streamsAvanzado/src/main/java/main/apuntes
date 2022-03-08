@@ -1,6 +1,9 @@
 filter
 limit
 skip
+take
+takewhile
+peek
 sorted
 distinct
 
@@ -9,11 +12,13 @@ flatmap
 
 reduce un elemento
 
-anyMatch,allMatch devuelve boolean para comprabar algo.
+anyMatch,allMatch,noneMatch devuelve boolean para comprabar algo.
 
 Collect
-
+forEach
 grouping
 toList
 toMap
+
+
 

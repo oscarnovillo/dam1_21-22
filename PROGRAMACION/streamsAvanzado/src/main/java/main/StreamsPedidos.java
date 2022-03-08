@@ -17,6 +17,9 @@ public class StreamsPedidos {
 
         Producto p=null;
 
+
+
+
         pedidos.stream()
                 .flatMap(pc -> pc.getPedidosSimples().stream())
                 .flatMap(ps -> ps.getLineasPedido().stream())
