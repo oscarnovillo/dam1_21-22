@@ -5,6 +5,7 @@ import pedidos.dao.modelo.*;
 import pedidos.servicios.ServiciosPedido;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 
@@ -16,6 +17,16 @@ public class StreamsPedidos {
     public void productosAgrupadosPorCantidadDeVecesPedidos() {
 
         Producto p=null;
+
+        Map<Integer,List<Producto>> productos = sp.todosProductos().stream()
+                        .collect(Collectors.groupingBy(producto ->
+                                pedidos.stream()
+                                        .flatMap(pc -> pc.getPedidosSimples().stream())
+                                        .flatMap(ps -> ps.getLineasPedido().stream())
+                                        .filter(ps -> ps.getProducto().equals(producto))
+                                        .mapToInt(LineaPedido::getCantidad)
+                                        .sum()
+                        ));
 
 
 
