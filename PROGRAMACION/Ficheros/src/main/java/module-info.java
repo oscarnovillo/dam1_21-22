@@ -14,6 +14,7 @@ module Ficheros {
     opens ui;
     opens domain.modelo;
     opens config;
+    opens servicios;
 
     exports ui;
 

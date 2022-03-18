@@ -13,12 +13,13 @@ public class MainYamlJackson {
 
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
         mapper.findAndRegisterModules();
-        MainYamlJackson j = new MainYamlJackson();
+
 
         Configuracion order = mapper.readValue(
-                j.getClass().getClassLoader().getResourceAsStream("config.yaml"), Configuracion.class);
+                MainYamlJackson.class.getClassLoader().getResourceAsStream("config.yaml"), Configuracion.class);
 
         System.out.println(order.getPathDatos());
+        System.out.println(order.getNumeroSuspensos());
 
 
     }

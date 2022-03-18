@@ -1,5 +1,7 @@
 package ui;
 
+import servicios.ServiciosFicheros;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -10,6 +12,12 @@ public class Main {
 
     public static void main(String[] args) {
         //cargando properties
+
+
+
+
+
+
 
         try (FileInputStream f = new FileInputStream("config/configFuera.properties")) {
             Properties p = new Properties();
