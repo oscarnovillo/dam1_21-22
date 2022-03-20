@@ -2,6 +2,7 @@ package ui;
 
 
 import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 public class Test {
 
@@ -9,7 +10,7 @@ public class Test {
     public Test2 test;
 
     @Inject
-    public Test(Test2 test) {
+    public Test(@Named("test") Test2 test) {
         this.test = test;
     }
 }
