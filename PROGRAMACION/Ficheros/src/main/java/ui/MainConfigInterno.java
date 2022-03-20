@@ -1,5 +1,6 @@
 package ui;
 
+import config.Configuracion;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,18 +19,18 @@ public class MainConfigInterno {
         //cargando properties
 
         try  {
-            MainConfigInterno m = new MainConfigInterno();
+
             Properties p = new Properties();
-            p.load(m.getClass().getClassLoader().getResourceAsStream("config.properties"));
+            p.load(MainConfigInterno.class.getClassLoader().getResourceAsStream("confi.properties"));
+
+            System.out.println(p.getProperty("path_datos"));
 
             log.info("datos ok");
-        } catch (FileNotFoundException e) {
-            System.out.println("error de fichero no existe");
-        } catch (IOException e) {
-            System.out.println("no puedo leer fichero");
         } catch (Exception e) {
-            System.out.println("otro error no reconocido");
+            log.error(e.getMessage(),e);
         }
+
+        System.out.println("despues del error");
 
 
     }
