@@ -40,6 +40,11 @@ public class DataBase {
                                 new JsonPrimitive(localDateTime.toString()))
                 .create();
 
+        RuntimeTypeAdapterFactory<Cliente> adapter =
+                RuntimeTypeAdapterFactory
+                        .of(Cliente.class)
+                        .registerSubtype(ClienteVip.class);
+
         this.configuracion = Configuracion.getInstance();
     }
 
