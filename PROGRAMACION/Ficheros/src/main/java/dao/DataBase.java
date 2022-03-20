@@ -4,6 +4,8 @@ import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import config.Configuracion;
 import domain.modelo.Cliente;
+import domain.modelo.ClienteVip;
+import gsonutils.RuntimeTypeAdapterFactory;
 import lombok.extern.log4j.Log4j2;
 
 import java.io.FileNotFoundException;
@@ -25,6 +27,13 @@ public class DataBase {
     private Configuracion configuracion;
 
     public DataBase() {
+
+        RuntimeTypeAdapterFactory<Cliente> adapter =
+                RuntimeTypeAdapterFactory
+                        .of(Cliente.class)
+                        .registerSubtype(ClienteVip.class);
+
+
         this.gson = new GsonBuilder()
                 .registerTypeAdapter(LocalDateTime.class,
                         (JsonDeserializer<LocalDateTime>) (json, type, jsonDeserializationContext) ->
@@ -38,12 +47,9 @@ public class DataBase {
                 .registerTypeAdapter(LocalDate.class,
                         (JsonSerializer<LocalDate>) (localDateTime, type, jsonSerializationContext) ->
                                 new JsonPrimitive(localDateTime.toString()))
+                .registerTypeAdapterFactory(adapter)
                 .create();
 
-        RuntimeTypeAdapterFactory<Cliente> adapter =
-                RuntimeTypeAdapterFactory
-                        .of(Cliente.class)
-                        .registerSubtype(ClienteVip.class);
 
         this.configuracion = Configuracion.getInstance();
     }

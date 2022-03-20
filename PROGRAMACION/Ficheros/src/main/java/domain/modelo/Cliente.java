@@ -10,16 +10,25 @@ import lombok.Getter;
 import java.util.Objects;
 
 
-@Builder
+
 @Getter
-public class Cliente {
-    private final String dni;
-    private final String nombre;
+public abstract class Cliente {
+
+    public String type;
+    private String dni;
+    private String nombre;
+
 
     public Cliente(String nombre, String dni) {
         this.dni = dni;
         this.nombre = nombre;
+
     }
+
+    public Cliente() {
+
+    }
+
 
     @Override
     public boolean equals(Object o) {
