@@ -31,8 +31,10 @@ public class Configuracion {
 
             try {
                 configuracion = mapper.readValue(
-                        Configuracion.class.getClassLoader().getResourceAsStream("config.yaml"), Configuracion.class);
+                        Configuracion.class.getClassLoader().getResourceAsStream("config.yaml"),
+                        Configuracion.class);
 
+//                configuracion = new Configuracion();
                 Properties p = new Properties();
                 p.load(MainConfigInterno.class.getClassLoader().getResourceAsStream("config.properties"));
                 configuracion.url = p.getProperty("url");

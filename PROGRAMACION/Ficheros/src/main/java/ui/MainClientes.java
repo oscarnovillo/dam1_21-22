@@ -1,6 +1,7 @@
 package ui;
 
 import com.google.gson.*;
+import com.google.gson.reflect.TypeToken;
 import config.Configuracion;
 import dao.DaoClientes;
 import dao.DataBase;
@@ -10,9 +11,11 @@ import domain.modelo.ClienteVip;
 import gsonutils.RuntimeTypeAdapterFactory;
 import servicios.ServiciosClientes;
 
+import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class MainClientes {
@@ -23,7 +26,6 @@ public class MainClientes {
         RuntimeTypeAdapterFactory<Cliente> adapter =
                 RuntimeTypeAdapterFactory
                         .of(Cliente.class,"type")
-                        .registerSubtype(Cliente.class)
                         .registerSubtype(ClienteNormal.class)
                         .registerSubtype(ClienteVip.class);
 
@@ -49,14 +51,32 @@ public class MainClientes {
                                 Configuracion.getInstance())));
 //
 //        DataBase db = new DataBase(gson,Configuracion.getInstance());
-//        List<Cliente> clientes = new ArrayList<>();
-//        clientes.add(new ClienteNormal("alex", "89"));
-//        clientes.add(new ClienteNormal("alex", "89"));
-//        clientes.add(new ClienteVip("alex", "89",90.0));
-//        clientes.add(new ClienteVip("alex", "89",90.0));
-//        clientes.add(new ClienteNormal("alex", "89"));
-        sc.addCliente(new ClienteNormal("alex", "89"));
-        sc.addCliente(new ClienteVip("vip", "199", 90.0));
+        LinkedHashMap<String,Cliente> clientes = new LinkedHashMap<>();
+        clientes.put("1",new ClienteNormal("alex", "1"));
+        clientes.put("2",new ClienteNormal("alex", "2"));
+        clientes.put("3",new ClienteVip("alex", "3",90.0));
+        clientes.put("4",new ClienteVip("alex", "4",90.0));
+        clientes.put("5",new ClienteNormal("alex", "5"));
+//        sc.addCliente(new ClienteNormal("alex", "89"));
+//        sc.addCliente(new ClienteVip("vip", "199", 90.0));
+
+        Gson gson2 = new Gson();
+
+
+        String s = gson2.toJson(clientes);
+
+
+        System.out.println(s);
+
+        Type userListType = new TypeToken<LinkedHashMap<String,Cliente>>() {
+        }.getType();
+
+
+        LinkedHashMap<String,Cliente> clientes2 = gson.fromJson(s,userListType);
+
+        System.out.println(clientes2);
+
+
 
 //        db.saveClientes(clientes);
 

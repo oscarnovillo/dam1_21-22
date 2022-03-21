@@ -13,7 +13,6 @@ public class ClienteVip extends Cliente{
     public ClienteVip() {
        super();
         type = "ClienteVip";
-
     }
 
     public ClienteVip(String nombre, String dni, Double descuento) {

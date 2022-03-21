@@ -15,6 +15,7 @@ import java.util.Objects;
 public abstract class Cliente {
 
     public String type;
+
     private String dni;
     private String nombre;
 
