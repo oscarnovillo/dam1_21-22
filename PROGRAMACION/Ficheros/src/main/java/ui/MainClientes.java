@@ -5,9 +5,7 @@ import com.google.gson.reflect.TypeToken;
 import config.Configuracion;
 import dao.DaoClientes;
 import dao.DataBase;
-import domain.modelo.Cliente;
-import domain.modelo.ClienteNormal;
-import domain.modelo.ClienteVip;
+import domain.modelo.*;
 import gsonutils.RuntimeTypeAdapterFactory;
 import servicios.ServiciosClientes;
 
@@ -17,6 +15,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MainClientes {
 
@@ -28,6 +27,12 @@ public class MainClientes {
                         .of(Cliente.class,"type")
                         .registerSubtype(ClienteNormal.class)
                         .registerSubtype(ClienteVip.class);
+
+        RuntimeTypeAdapterFactory<Producto> adapterP =
+                RuntimeTypeAdapterFactory
+                        .of(Producto.class,"type")
+                        .registerSubtype(ProductoCaducable.class)
+                        .registerSubtype(ProductoNormal.class);
 
         Gson gson =  new GsonBuilder()
                 .registerTypeAdapter(LocalDateTime.class,
@@ -43,6 +48,7 @@ public class MainClientes {
                         (JsonSerializer<LocalDate>) (localDateTime, type, jsonSerializationContext) ->
                                 new JsonPrimitive(localDateTime.toString()))
                 .registerTypeAdapterFactory(adapter)
+                .registerTypeAdapterFactory(adapterP)
                 .create();
         ServiciosClientes sc = new ServiciosClientes(
                 new DaoClientes(
@@ -57,6 +63,8 @@ public class MainClientes {
         clientes.put("3",new ClienteVip("alex", "3",90.0));
         clientes.put("4",new ClienteVip("alex", "4",90.0));
         clientes.put("5",new ClienteNormal("alex", "5"));
+        clientes.get("1").getProductos().add(new ProductoNormal());
+        clientes.get("1").getProductos().add(new ProductoCaducable());
 //        sc.addCliente(new ClienteNormal("alex", "89"));
 //        sc.addCliente(new ClienteVip("vip", "199", 90.0));
 
@@ -77,6 +85,21 @@ public class MainClientes {
         System.out.println(clientes2);
 
 
+        ClienteLista cl = new ClienteLista();
+        cl.setNombre("kk");
+        cl.setClientes(new ArrayList<>(clientes.values()));
+
+         s = gson2.toJson(cl);
+
+
+        System.out.println(s);
+
+         userListType = new TypeToken<LinkedHashMap<String,Cliente>>() {
+        }.getType();
+
+
+        System.out.println(gson.fromJson(s,ClienteLista.class));
+
 
 //        db.saveClientes(clientes);
 
@@ -88,7 +111,7 @@ public class MainClientes {
 //
 //
 //
-        System.out.println(sc.getClientes());
+//        System.out.println(sc.getClientes());
 
 
     }

@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -18,11 +20,13 @@ public abstract class Cliente {
 
     private String dni;
     private String nombre;
+    private List<Producto> productos;
 
 
     public Cliente(String nombre, String dni) {
         this.dni = dni;
         this.nombre = nombre;
+        productos = new ArrayList<>();
 
     }
 
@@ -49,6 +53,7 @@ public abstract class Cliente {
         return "Cliente{" +
                 "dni='" + dni + '\'' +
                 ", nombre='" + nombre + '\'' +
+                ",producto" + productos +
                 '}';
     }
 }
