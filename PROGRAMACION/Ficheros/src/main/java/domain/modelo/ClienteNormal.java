@@ -9,10 +9,6 @@ import lombok.Setter;
 public class ClienteNormal extends Cliente{
 
 
-    public ClienteNormal() {
-        super();
-        type = "ClienteNormal";
-    }
 
     public ClienteNormal(String nombre, String dni) {
         super(nombre, dni);

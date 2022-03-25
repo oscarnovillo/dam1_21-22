@@ -10,11 +10,6 @@ public class ClienteVip extends Cliente{
     private Double descuento;
 
 
-    public ClienteVip() {
-       super();
-        type = "ClienteVip";
-    }
-
     public ClienteVip(String nombre, String dni, Double descuento) {
         super(nombre, dni);
         this.descuento= descuento;
