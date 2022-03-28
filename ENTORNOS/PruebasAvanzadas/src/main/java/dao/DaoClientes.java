@@ -35,7 +35,6 @@ public class DaoClientes {
         return ok;
     }
 
-
     public boolean addCliente(Cliente c) {
         boolean ok = false;
         List<Cliente> clientes = db.loadClientes();
@@ -49,9 +48,7 @@ public class DaoClientes {
         return ok;
     }
 
-
     public List<Cliente> getClientes() {
         return db.loadClientes();
     }
-
 }

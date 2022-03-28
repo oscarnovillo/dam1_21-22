@@ -21,5 +21,8 @@ public class MainCDI {
         System.out.println(imageFileProcessor.test.getI());
 
         container.close();
+
+            
+
     }
 }
