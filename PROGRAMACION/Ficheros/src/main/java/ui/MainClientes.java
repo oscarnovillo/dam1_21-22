@@ -24,13 +24,13 @@ public class MainClientes {
 
         RuntimeTypeAdapterFactory<Cliente> adapter =
                 RuntimeTypeAdapterFactory
-                        .of(Cliente.class,"type")
+                        .of(Cliente.class,"type",true)
                         .registerSubtype(ClienteNormal.class)
                         .registerSubtype(ClienteVip.class);
 
         RuntimeTypeAdapterFactory<Producto> adapterP =
                 RuntimeTypeAdapterFactory
-                        .of(Producto.class,"type")
+                        .of(Producto.class,"type",true)
                         .registerSubtype(ProductoCaducable.class)
                         .registerSubtype(ProductoNormal.class);
 
@@ -63,16 +63,19 @@ public class MainClientes {
         clientes.put("3",new ClienteVip("alex", "3",90.0));
         clientes.put("4",new ClienteVip("alex", "4",90.0));
         clientes.put("5",new ClienteNormal("alex", "5"));
-        clientes.get("1").getProductos().add(new ProductoNormal());
-        clientes.get("1").getProductos().add(new ProductoCaducable());
+        clientes.get("1").getProductos().add(new ProductoNormal("kk",1.0,1));
+        clientes.get("1").getProductos().add(new ProductoCaducable("nn",LocalDate.now()));
 //        sc.addCliente(new ClienteNormal("alex", "89"));
 //        sc.addCliente(new ClienteVip("vip", "199", 90.0));
 
         Gson gson2 = new Gson();
 
+        ClienteLista cl = new ClienteLista();
+        cl.setNombre("kk");
+        cl.setClientes((clientes.values().stream().collect(Collectors.toList())));
 
-        String s = gson2.toJson(clientes);
-
+        String s1 = gson.toJson(cl);
+        String s = gson.toJson(clientes);
 
         System.out.println(s);
 
@@ -85,11 +88,8 @@ public class MainClientes {
         System.out.println(clientes2);
 
 
-        ClienteLista cl = new ClienteLista();
-        cl.setNombre("kk");
-        cl.setClientes(new ArrayList<>(clientes.values()));
 
-         s = gson2.toJson(cl);
+
 
 
         System.out.println(s);
