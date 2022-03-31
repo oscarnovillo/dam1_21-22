@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.PrincipalController">
+   <children>
+      <TextField fx:id="txtNombre" layoutX="186.0" layoutY="63.0" promptText="Nombre" />
+      <Button layoutX="261.0" layoutY="175.0" mnemonicParsing="false" onAction="#saludar" text="Bienvenida" />
+      <Label layoutX="112.0" layoutY="67.0" text="Nombre" />
+   </children>
+</AnchorPane>
