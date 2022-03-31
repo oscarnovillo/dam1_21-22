@@ -1,6 +1,7 @@
 package dao;
 
 import domain.modelo.Cliente;
+import jakarta.inject.Inject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,13 +12,14 @@ public class DaoClientes {
     private DataBase db;
 
 
+    @Inject
     public DaoClientes(DataBase db) {
         this.db = db;
     }
-
-    public DaoClientes() {
-        this.db = new DataBase();
-    }
+//
+//    public DaoClientes() {
+//        this.db = new DataBase();
+//    }
 
     public boolean updateCliente(Cliente c) {
         boolean ok = false;

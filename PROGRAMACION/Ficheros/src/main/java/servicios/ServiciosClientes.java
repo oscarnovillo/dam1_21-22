@@ -6,6 +6,7 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import config.Configuracion;
 import dao.DaoClientes;
 import domain.modelo.Cliente;
+import jakarta.inject.Inject;
 import ui.MainYamlJackson;
 
 import java.io.IOException;
@@ -15,6 +16,7 @@ public class ServiciosClientes {
 
     private DaoClientes dao;
 
+    @Inject
     public ServiciosClientes(DaoClientes dao) {
         this.dao = dao;
     }

@@ -50,11 +50,12 @@ public class MainClientes {
                 .registerTypeAdapterFactory(adapter)
                 .registerTypeAdapterFactory(adapterP)
                 .create();
-        ServiciosClientes sc = new ServiciosClientes(
-                new DaoClientes(
-                        new DataBase(
-                               gson,
-                                Configuracion.getInstance())));
+        ServiciosClientes sc ;
+//        ServiciosClientes sc = new ServiciosClientes(
+//                new DaoClientes(
+//                        new DataBase(
+//                               gson,
+//                                Configuracion.getInstance())));
 //
 //        DataBase db = new DataBase(gson,Configuracion.getInstance());
         LinkedHashMap<String,Cliente> clientes = new LinkedHashMap<>();

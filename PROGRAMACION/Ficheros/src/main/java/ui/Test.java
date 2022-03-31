@@ -11,7 +11,7 @@ public class Test {
     public Test2 test;
 
     @Inject
-    public Test(@Named("test") Test2 test) {
+    public Test(Test2 test) {
         this.test = test;
     }
 }

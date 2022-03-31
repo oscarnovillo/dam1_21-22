@@ -4,8 +4,10 @@ import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import config.Configuracion;
 import domain.modelo.Cliente;
+import domain.modelo.ClienteNormal;
 import domain.modelo.ClienteVip;
 import gsonutils.RuntimeTypeAdapterFactory;
+import jakarta.inject.Inject;
 import lombok.extern.log4j.Log4j2;
 
 import java.io.FileNotFoundException;
@@ -26,35 +28,37 @@ public class DataBase {
 
     private Configuracion configuracion;
 
-    public DataBase() {
+//    public DataBase() {
+//
+//        RuntimeTypeAdapterFactory<Cliente> adapter =
+//                RuntimeTypeAdapterFactory
+//                        .of(Cliente.class)
+//                        .registerSubtype(ClienteNormal.class)
+//                        .registerSubtype(ClienteVip.class);
+//
+//
+//        this.gson = new GsonBuilder()
+//                .registerTypeAdapter(LocalDateTime.class,
+//                        (JsonDeserializer<LocalDateTime>) (json, type, jsonDeserializationContext) ->
+//                                LocalDateTime.parse(json.getAsJsonPrimitive().getAsString()))
+//                .registerTypeAdapter(LocalDateTime.class,
+//                        (JsonSerializer<LocalDateTime>) (localDateTime, type, jsonSerializationContext) ->
+//                                new JsonPrimitive(localDateTime.toString()))
+//                .registerTypeAdapter(LocalDate.class,
+//                        (JsonDeserializer<LocalDate>) (json, type, jsonDeserializationContext) ->
+//                                LocalDate.parse(json.getAsJsonPrimitive().getAsString()))
+//                .registerTypeAdapter(LocalDate.class,
+//                        (JsonSerializer<LocalDate>) (localDateTime, type, jsonSerializationContext) ->
+//                                new JsonPrimitive(localDateTime.toString()))
+//                .registerTypeAdapterFactory(adapter)
+//                .create();
+//
+//
+//        this.configuracion = Configuracion.getInstance();
+//    }
 
-        RuntimeTypeAdapterFactory<Cliente> adapter =
-                RuntimeTypeAdapterFactory
-                        .of(Cliente.class)
-                        .registerSubtype(ClienteVip.class);
-
-
-        this.gson = new GsonBuilder()
-                .registerTypeAdapter(LocalDateTime.class,
-                        (JsonDeserializer<LocalDateTime>) (json, type, jsonDeserializationContext) ->
-                                LocalDateTime.parse(json.getAsJsonPrimitive().getAsString()))
-                .registerTypeAdapter(LocalDateTime.class,
-                        (JsonSerializer<LocalDateTime>) (localDateTime, type, jsonSerializationContext) ->
-                                new JsonPrimitive(localDateTime.toString()))
-                .registerTypeAdapter(LocalDate.class,
-                        (JsonDeserializer<LocalDate>) (json, type, jsonDeserializationContext) ->
-                                LocalDate.parse(json.getAsJsonPrimitive().getAsString()))
-                .registerTypeAdapter(LocalDate.class,
-                        (JsonSerializer<LocalDate>) (localDateTime, type, jsonSerializationContext) ->
-                                new JsonPrimitive(localDateTime.toString()))
-                .registerTypeAdapterFactory(adapter)
-                .create();
-
-
-        this.configuracion = Configuracion.getInstance();
-    }
-
-    public DataBase(Gson gson, Configuracion configuracion) {
+    @Inject
+    public DataBase(Gson gson,Configuracion configuracion) {
         this.gson = gson;
         this.configuracion = configuracion;
     }
