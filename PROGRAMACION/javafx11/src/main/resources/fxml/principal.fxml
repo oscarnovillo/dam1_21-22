@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import io.github.palexdev.materialfx.controls.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -8,5 +9,13 @@
       <TextField fx:id="txtNombre" layoutX="186.0" layoutY="63.0" promptText="Nombre" />
       <Button layoutX="261.0" layoutY="175.0" mnemonicParsing="false" onAction="#saludar" text="Bienvenida" />
       <Label layoutX="112.0" layoutY="67.0" text="Nombre" />
+     <MFXButton buttonType="RAISED" layoutX="86.0" layoutY="138.0" mnemonicParsing="false" onAction="#verSeleccionTabla" text="Bienvenida" />
+      <TableView fx:id="table" layoutX="354.0" layoutY="63.0" prefHeight="200.0" prefWidth="200.0">
+        <columns>
+          <TableColumn fx:id="columnNombre" prefWidth="75.0" text="C1" />
+          <TableColumn fx:id="columnEdad" prefWidth="75.0" text="C2" />
+            <TableColumn prefWidth="75.0" text="C3" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

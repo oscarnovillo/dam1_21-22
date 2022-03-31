@@ -7,6 +7,15 @@
     <groupId>org.example</groupId>
     <artifactId>Ficheros</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <main.class>ui.MainConfigInterno</main.class>
+    </properties>
+
+
     <dependencies>
 
         <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
@@ -16,14 +25,18 @@
             <version>2.9.0</version>
         </dependency>
 
-
-
-
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>2.17.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.17.2</version>
+        </dependency>
+
+
         <dependency>
             <groupId>org.yaml</groupId>
             <artifactId>snakeyaml</artifactId>
@@ -58,11 +71,7 @@
 
     </dependencies>
 
-    <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-        <main.class>ui.MainConfigInterno</main.class>
-    </properties>
+
 
 
     <build>

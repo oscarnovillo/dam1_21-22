@@ -27,9 +27,9 @@ public class MainCDI {
 //        System.out.println(imageFileProcessor1.test.getI());
 
 
-        ServiciosClientes serviciosClientes = container.select(ServiciosClientes.class).get();
+        MainServicios ui = container.select(MainServicios.class).get();
 
-        System.out.println(serviciosClientes.getClientes());
+        ui.run();
 
         container.close();
 

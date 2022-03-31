@@ -1,6 +1,8 @@
 package config;
 
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.google.gson.annotations.SerializedName;
@@ -21,20 +23,19 @@ import java.util.Properties;
 @Singleton
 public class Configuracion {
 
-    private Configuracion(){
+    public Configuracion(){
 
             ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
             mapper.findAndRegisterModules();
 
             try {
-                Configuracion configuracion = mapper.readValue(
-                        Configuracion.class.getClassLoader().getResourceAsStream("config.yaml"),
-                        Configuracion.class);
 
-                this.pathDatos = configuracion.getPathDatos();
+                JsonNode node = mapper.readTree(Configuracion.class.getClassLoader().getResourceAsStream("config.yaml"));
+
+                this.pathDatos = node.get("pathDatos").asText();
 
             } catch (IOException e) {
-               log.error(e.getMessage(),e);
+                System.out.println(e.getMessage());
             }
         }
 
@@ -42,7 +43,7 @@ public class Configuracion {
 
     private String pathDatos;
     private int numeroSuspensos;
-    private String url;
+
 
 
 
