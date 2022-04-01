@@ -5,21 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a6427cb-bc57-43fb-9d33-774f1e89807f" name="Changes" comment="a">
-      <change afterPath="$PROJECT_DIR$/../Ficheros/src/main/java/ui/MainServicios.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/bin.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../javafx11/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../javafx11/src/main/java/domain/modelo/Persona.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../javafx11/src/main/java/ui/viewmodel/PrincipalViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ficheros/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Ficheros/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ficheros/src/main/java/config/Configuracion.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Ficheros/src/main/java/config/Configuracion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ficheros/src/main/java/ui/MainCDI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Ficheros/src/main/java/ui/MainCDI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-infoTEMP.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../javafx11/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../javafx11/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../javafx11/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../javafx11/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../javafx11/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/../javafx11/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../javafx11/src/main/java/ui/MainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/../javafx11/src/main/java/ui/MainFX.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../javafx11/src/main/java/ui/controllers/PrincipalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../javafx11/src/main/java/ui/controllers/PrincipalController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../javafx11/src/main/resources/fxml/principal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../javafx11/src/main/resources/fxml/principal.fxml" afterDir="false" />
     </list>
@@ -136,6 +128,7 @@
       <workItem from="1648324329083" duration="679000" />
       <workItem from="1648414517441" duration="632000" />
       <workItem from="1648750433291" duration="2157000" />
+      <workItem from="1648796314600" duration="2364000" />
     </task>
     <task id="LOCAL-00001" summary="a">
       <created>1647778744775</created>

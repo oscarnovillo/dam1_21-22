@@ -33,7 +33,7 @@ public class MainFX extends Application {
         primaryStage.setTitle("IES Quevedo");
         primaryStage.setScene(scene);
         primaryStage.show();
-        primaryStage.setResizable(false);
+        primaryStage.setResizable(true);
 
     }
 }
