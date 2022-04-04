@@ -1,4 +1,4 @@
-package ui.controllers;
+package ui.pantallas.principal;
 
 import domain.modelo.Persona;
 import io.github.palexdev.materialfx.controls.*;
@@ -11,9 +11,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import ui.viewmodel.PrincipalViewModel;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -51,20 +51,18 @@ public class PrincipalController implements Initializable {
     private TextField txtNombre;
 
     public PrincipalController() {
-
-
-
     }
 
     @FXML
     private void saludar() {
 
-        viewModel.addPersona(new Persona(nombreDefecto, 10));
 
+        viewModel.addPersona(new Persona(nombreDefecto, 10));
 
         String nombre = !txtNombre.getText().isBlank()
                 ? txtNombre.getText() : nombreDefecto;
         String text = "hola " + nombre;
+        fecha.setValue(LocalDate.of(2019, 1, 1));
 
         Alert a = new Alert(Alert.AlertType.ERROR);
         a.setContentText(text);
@@ -79,6 +77,8 @@ public class PrincipalController implements Initializable {
         viewModel = new PrincipalViewModel();
         columnEdad.setCellValueFactory(new PropertyValueFactory<>("edad"));
         columnNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+
+
         table.setItems(viewModel.getPersonas());
         combo.getItems().addAll("Alejandro", "Pedro", "Juan");
         List<Persona> personas = new ArrayList<>();
@@ -91,7 +91,7 @@ public class PrincipalController implements Initializable {
 
         listado.getSelectionModel().setAllowsMultipleSelection(false);
 
-
+        fecha.setValue(LocalDate.of(2019, 1, 1));
 
     }
 

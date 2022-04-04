@@ -7,10 +7,12 @@ module javafx {
     requires lombok;
 
     exports ui;
-    exports ui.controllers;
+    exports ui.pantallas;
 
 
     opens domain.modelo to javafx.base;
-    opens ui.controllers to javafx.fxml;
+    opens ui.pantallas to javafx.fxml;
+    exports ui.pantallas.principal;
+    opens ui.pantallas.principal to javafx.fxml;
 
 }

@@ -29,6 +29,7 @@ public class MainCDI {
 
         MainServicios ui = container.select(MainServicios.class).get();
 
+
         ui.run();
 
         container.close();
