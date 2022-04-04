@@ -11,7 +11,7 @@ public class ServiciosFicheros {
 
     public static Configuracion config;
 
-    public static Configuracion getConfig()
+    static Configuracion getConfig()
     {
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
         mapper.findAndRegisterModules();
@@ -19,13 +19,12 @@ public class ServiciosFicheros {
 
         //onfiguracion configuracion = null;
         try {
-            config = mapper.readValue(
+            ServiciosFicheros.config = mapper.readValue(
                     MainYamlJackson.class.getClassLoader().getResourceAsStream("config.yaml"), Configuracion.class);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return config;
+        return ServiciosFicheros.config;
     }
-
 }

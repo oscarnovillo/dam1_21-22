@@ -2,9 +2,6 @@ package ui;
 
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
-import config.Configuracion;
-import dao.DaoClientes;
-import dao.DataBase;
 import domain.modelo.*;
 import gsonutils.RuntimeTypeAdapterFactory;
 import servicios.ServiciosClientes;
@@ -12,9 +9,7 @@ import servicios.ServiciosClientes;
 import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class MainClientes {
