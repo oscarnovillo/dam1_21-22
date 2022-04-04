@@ -1,5 +1,8 @@
 package ui.pantallas.principal;
 
+import common.Constantes;
+import dao.DaoPersonas;
+import domain.ServiciosPersonas;
 import domain.modelo.Persona;
 import io.github.palexdev.materialfx.controls.*;
 import javafx.event.ActionEvent;
@@ -20,6 +23,9 @@ import java.util.ResourceBundle;
 
 public class PrincipalController implements Initializable {
 
+
+    @FXML
+    private Constantes common;
 
     private final String nombreDefecto = "Alejandro";
     @FXML
@@ -51,12 +57,11 @@ public class PrincipalController implements Initializable {
     private TextField txtNombre;
 
     public PrincipalController() {
+        viewModel = new PrincipalViewModel(new ServiciosPersonas(new DaoPersonas()));
     }
 
     @FXML
     private void saludar() {
-
-
         viewModel.addPersona(new Persona(nombreDefecto, 10));
 
         String nombre = !txtNombre.getText().isBlank()
@@ -67,19 +72,16 @@ public class PrincipalController implements Initializable {
         Alert a = new Alert(Alert.AlertType.ERROR);
         a.setContentText(text);
         a.showAndWait();
-
-
     }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        viewModel = new PrincipalViewModel();
+
         columnEdad.setCellValueFactory(new PropertyValueFactory<>("edad"));
         columnNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
 
-
-        table.setItems(viewModel.getPersonas());
+        table.setItems(viewModel.getState().get().getPersonas());
         combo.getItems().addAll("Alejandro", "Pedro", "Juan");
         List<Persona> personas = new ArrayList<>();
 
@@ -92,6 +94,12 @@ public class PrincipalController implements Initializable {
         listado.getSelectionModel().setAllowsMultipleSelection(false);
 
         fecha.setValue(LocalDate.of(2019, 1, 1));
+
+        viewModel.getState().addListener((observable, oldValue, newValue) -> {
+            if (newValue.getError() != null) {
+                //sacar un alert
+            }
+        });
 
     }
 

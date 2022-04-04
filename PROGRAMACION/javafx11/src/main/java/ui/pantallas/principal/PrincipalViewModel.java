@@ -2,6 +2,10 @@ package ui.pantallas.principal;
 
 import domain.ServiciosPersonas;
 import domain.modelo.Persona;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.ReadOnlyObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.value.ObservableObjectValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import lombok.Getter;
@@ -12,40 +16,30 @@ public class PrincipalViewModel {
     private ServiciosPersonas serviciosPersonas;
 
     public PrincipalViewModel() {
-        _personas = FXCollections.observableArrayList();
+        _state = new SimpleObjectProperty<>(new PrincipalState(FXCollections.observableArrayList(),null));
     }
+
 
     public PrincipalViewModel(ServiciosPersonas serviciosPersonas) {
         this();
         this.serviciosPersonas = serviciosPersonas;
     }
 
-    private final ObservableList<Persona> _personas;
-
-
-    private PrincipalState _state;
-    public PrincipalState getState() {
+    private ObjectProperty<PrincipalState> _state;
+    public ReadOnlyObjectProperty<PrincipalState> getState() {
         return _state;
     }
 
-
-    public ObservableList<Persona> getPersonas()
-    {
-        return FXCollections.unmodifiableObservableList(_personas);
-    }
-
-
     public void addPersona(Persona persona){
         serviciosPersonas.addPersona(persona);
-        _personas.clear();
-        _personas.addAll(serviciosPersonas.getPersonas());
+        _state.get().getPersonas().clear();
+        _state.get().getPersonas().addAll(serviciosPersonas.getPersonas());
 
     }
 
     public void updatePersona(Persona persona) {
-        _personas.remove(persona);
-        _personas.add(persona);
-
+        _state.get().getPersonas().remove(persona);
+        _state.get().getPersonas().add(persona);
     }
 
 }

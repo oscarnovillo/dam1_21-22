@@ -5,14 +5,11 @@ module javafx {
     requires MaterialFX;
 
     requires lombok;
-
     exports ui;
-    exports ui.pantallas;
-
 
     opens domain.modelo to javafx.base;
-    opens ui.pantallas to javafx.fxml;
     exports ui.pantallas.principal;
+    exports common to javafx.fxml;
     opens ui.pantallas.principal to javafx.fxml;
 
 }

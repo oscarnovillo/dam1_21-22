@@ -12,6 +12,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 
 public class MainFX extends Application {
@@ -23,14 +25,13 @@ public class MainFX extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
-        primaryStage.setTitle("Hello World!");
-        FXMLLoader loaderMenu = new FXMLLoader(
-                getClass().getResource("/fxml/principal.fxml"));
+        ResourceBundle r = ResourceBundle.getBundle("textosI18N", Locale.getDefault());
 
+        FXMLLoader loaderMenu = new FXMLLoader(getClass().getResource("/fxml/principal.fxml"),r);
 
         AnchorPane root = loaderMenu.load();
         Scene scene = new Scene(root);
-        primaryStage.setTitle("IES Quevedo");
+        primaryStage.setTitle(r.getString("app.title"));
         primaryStage.setScene(scene);
         primaryStage.show();
         primaryStage.setResizable(true);
