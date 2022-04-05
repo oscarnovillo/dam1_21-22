@@ -5,8 +5,10 @@ module javafx {
     requires MaterialFX;
 
     requires lombok;
-    exports ui;
+    requires com.fasterxml.jackson.dataformat.yaml;
+    requires com.fasterxml.jackson.databind;
 
+    exports ui;
     opens domain.modelo to javafx.base;
     exports ui.pantallas.principal;
     exports common to javafx.fxml;

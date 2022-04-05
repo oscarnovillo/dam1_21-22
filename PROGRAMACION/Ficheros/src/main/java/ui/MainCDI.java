@@ -1,11 +1,16 @@
 package ui;
 
+import com.google.gson.Gson;
+import config.Configuracion;
+import dao.impl.DaoClientesImpl;
+import dao.impl.DataBase;
 import org.jboss.weld.environment.se.Weld;
 import org.jboss.weld.environment.se.WeldContainer;
 
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.enterprise.inject.se.SeContainerInitializer;
 import servicios.ServiciosClientes;
+import servicios.impl.ServiciosClientesImpl;
 
 public class MainCDI {
 
@@ -26,6 +31,12 @@ public class MainCDI {
 //        System.out.println(imageFileProcessor.test.getI());
 //        System.out.println(imageFileProcessor1.test.getI());
 
+
+        MainServicios mainServicios = new MainServicios(
+                new ServiciosClientesImpl(
+                        new DaoClientesImpl(
+                                new DataBase(
+                                        new Gson(),new Configuracion()))));
 
         MainServicios ui = container.select(MainServicios.class).get();
 

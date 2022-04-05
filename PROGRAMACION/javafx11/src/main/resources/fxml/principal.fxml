@@ -2,7 +2,6 @@
 
 <?import io.github.palexdev.materialfx.controls.*?>
 <?import io.github.palexdev.materialfx.font.*?>
-<?import common.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -23,7 +22,7 @@
         </columns>
       </TableView>
     <MFXFontIcon description="mfx-logo" layoutX="53.0" layoutY="80.0" size="40.0" wrappingWidth="44.0" />
-      <MFXButton fx:id="borrar" layoutX="134.0" layoutY="238.0" onAction="#borrarElemento" text="Borrar" />
+      <MFXButton fx:id="borrar" layoutX="134.0" layoutY="238.0" onAction="#borrarElemento" text="%Borrar" />
       <MFXFontIcon description="mfx-bell" layoutX="260.0" layoutY="273.0" selectionEnd="1" selectionStart="1" size="24.0" wrappingWidth="29.0" />
       <MFXButton layoutX="86.0" layoutY="286.0" mnemonicParsing="false" text="Button" />
       <MFXDatePicker fx:id="fecha" layoutX="254.0" layoutY="299.0" />

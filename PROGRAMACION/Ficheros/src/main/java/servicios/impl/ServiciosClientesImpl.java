@@ -1,6 +1,7 @@
 package servicios.impl;
 
 import dao.DaoClientes;
+import dao.impl.DaoClientesImpl;
 import domain.modelo.Cliente;
 import jakarta.inject.Inject;
 import servicios.ServiciosClientes;
@@ -26,7 +27,7 @@ public class ServiciosClientesImpl implements ServiciosClientes {
     @Override
     public boolean updateCliente(Cliente c)
     {
-        return dao.updateCliente(c);
+        return dao.addCliente(c);
     }
 
 

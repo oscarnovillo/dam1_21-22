@@ -25,7 +25,8 @@ public class MainFX extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
-        ResourceBundle r = ResourceBundle.getBundle("textosI18N", Locale.getDefault());
+        //Locale.setDefault(new Locale("es-es"));
+        ResourceBundle r = ResourceBundle.getBundle("/i18n/textosI18N");
 
         FXMLLoader loaderMenu = new FXMLLoader(getClass().getResource("/fxml/principal.fxml"),r);
 
