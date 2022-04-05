@@ -144,6 +144,5 @@ public class PrincipalController implements Initializable {
             nombre.setText(p.getNombre());
             edad.setText(p.getEdad().toString());
         }
-
     }
 }
