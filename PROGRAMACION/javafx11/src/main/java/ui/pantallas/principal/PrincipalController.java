@@ -1,5 +1,8 @@
-package ui.controllers;
+package ui.pantallas.principal;
 
+import common.Constantes;
+import dao.DaoPersonas;
+import domain.ServiciosPersonas;
 import domain.modelo.Persona;
 import io.github.palexdev.materialfx.controls.*;
 import javafx.event.ActionEvent;
@@ -11,15 +14,18 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import ui.viewmodel.PrincipalViewModel;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class PrincipalController implements Initializable {
 
+
+    @FXML
+    private Constantes common;
 
     private final String nombreDefecto = "Alejandro";
     @FXML
@@ -51,35 +57,31 @@ public class PrincipalController implements Initializable {
     private TextField txtNombre;
 
     public PrincipalController() {
-
-
-
+        viewModel = new PrincipalViewModel(new ServiciosPersonas(new DaoPersonas()));
     }
 
     @FXML
     private void saludar() {
-
         viewModel.addPersona(new Persona(nombreDefecto, 10));
-
 
         String nombre = !txtNombre.getText().isBlank()
                 ? txtNombre.getText() : nombreDefecto;
         String text = "hola " + nombre;
+        fecha.setValue(LocalDate.of(2019, 1, 1));
 
         Alert a = new Alert(Alert.AlertType.ERROR);
         a.setContentText(text);
         a.showAndWait();
-
-
     }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        viewModel = new PrincipalViewModel();
+
         columnEdad.setCellValueFactory(new PropertyValueFactory<>("edad"));
         columnNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        table.setItems(viewModel.getPersonas());
+
+        table.setItems(viewModel.getState().get().getPersonas());
         combo.getItems().addAll("Alejandro", "Pedro", "Juan");
         List<Persona> personas = new ArrayList<>();
 
@@ -91,7 +93,13 @@ public class PrincipalController implements Initializable {
 
         listado.getSelectionModel().setAllowsMultipleSelection(false);
 
+        fecha.setValue(LocalDate.of(2019, 1, 1));
 
+        viewModel.getState().addListener((observable, oldValue, newValue) -> {
+            if (newValue.getError() != null) {
+                //sacar un alert
+            }
+        });
 
     }
 

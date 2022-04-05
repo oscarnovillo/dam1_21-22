@@ -2,13 +2,15 @@
 
 <?import io.github.palexdev.materialfx.controls.*?>
 <?import io.github.palexdev.materialfx.font.*?>
+<?import common.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="853.0" prefWidth="873.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.PrincipalController">
+
+<AnchorPane prefHeight="853.0" prefWidth="873.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.pantallas.principal.PrincipalController">
    <children>
-      <TextField fx:id="txtNombre" layoutX="186.0" layoutY="63.0" promptText="Nombre" />
-      <Button layoutX="261.0" layoutY="175.0" mnemonicParsing="false" onAction="#saludar" text="Bienvenida" />
+       <TextField fx:id="txtNombre" layoutX="186.0" layoutY="63.0" promptText="%NOMBRE" />
+      <Button layoutX="261.0" layoutY="175.0" mnemonicParsing="false" onAction="#saludar" text="%Bienvenido" />
       <Label layoutX="112.0" layoutY="67.0" text="Nombre" />
      <MFXButton buttonType="RAISED" layoutX="86.0" layoutY="119.0" mnemonicParsing="false" onAction="#verSeleccionTabla" prefHeight="44.0" prefWidth="79.0" text="Bienvenida" />
      <MFXButton buttonType="RAISED" layoutX="86.0" layoutY="119.0" mnemonicParsing="false" onAction="#verSeleccionTabla" prefHeight="44.0" prefWidth="79.0" text="Bienvenida" />
@@ -17,6 +19,7 @@
           <TableColumn fx:id="columnNombre" prefWidth="75.0" text="C1" />
           <TableColumn fx:id="columnEdad" prefWidth="75.0" text="C2" />
             <TableColumn prefWidth="75.0" text="C3" />
+            <TableColumn prefWidth="75.0" text="Column X" />
         </columns>
       </TableView>
     <MFXFontIcon description="mfx-logo" layoutX="53.0" layoutY="80.0" size="40.0" wrappingWidth="44.0" />
