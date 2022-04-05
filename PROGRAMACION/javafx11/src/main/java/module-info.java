@@ -5,6 +5,7 @@ module javafx {
     requires MaterialFX;
 
     requires lombok;
+    requires org.apache.logging.log4j;
     requires com.fasterxml.jackson.dataformat.yaml;
     requires com.fasterxml.jackson.databind;
 

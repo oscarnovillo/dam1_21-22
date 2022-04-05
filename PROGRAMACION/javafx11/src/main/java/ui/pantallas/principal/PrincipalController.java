@@ -101,6 +101,16 @@ public class PrincipalController implements Initializable {
             }
         });
 
+
+        listado.getSelectionModel().selectionProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                newValue.values().stream().findFirst().ifPresent(p -> {
+                    nombre.setText(p.getNombre());
+                    edad.setText(p.getEdad().toString());
+                });
+            }
+        });
+
     }
 
     @FXML
@@ -149,8 +159,8 @@ public class PrincipalController implements Initializable {
     private void update(MouseEvent mouseEvent) {
         Persona p = listado.getSelectionModel().getSelection().values().stream().findFirst().orElse(null);
         if (p != null) {
-            nombre.setText(p.getNombre());
-            edad.setText(p.getEdad().toString());
+//            nombre.setText(p.getNombre());
+//            edad.setText(p.getEdad().toString());
         }
     }
 }

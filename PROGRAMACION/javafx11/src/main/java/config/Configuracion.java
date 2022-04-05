@@ -12,7 +12,6 @@ import java.io.IOException;
 
 @Getter
 @Log4j2
-
 public class Configuracion {
 
     private String pathDatos;
@@ -28,7 +27,7 @@ public class Configuracion {
             this.pathDatos = node.get("pathDatos").asText();
 
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+           log.error(e.getMessage(),e);
         }
     }
 
