@@ -32,10 +32,10 @@ public class PrincipalViewModel {
 
     public void addPersona(Persona persona){
         serviciosPersonas.addPersona(persona);
-        _state.get().getPersonas().add(persona);
-//        _state.get().getPersonas().clear();
-//        _state.get().getPersonas().addAll(serviciosPersonas.getPersonas());
-//
+//        _state.get().getPersonas().add(persona);
+        _state.get().getPersonas().clear();
+        _state.get().getPersonas().addAll(serviciosPersonas.getPersonas());
+
     }
 
     public void updatePersona(Persona persona) {

@@ -70,7 +70,7 @@ public class PrincipalController implements Initializable {
     @FXML
     private void saludar() {
         viewModel.addPersona(new Persona(nombreDefecto, 10));
-
+        viewModel.getState().get().getPersonas().add(new Persona(nombreDefecto, 1220));
 
         String nombre = !txtNombre.getText().isBlank()
                 ? txtNombre.getText() : nombreDefecto;
@@ -131,7 +131,15 @@ public class PrincipalController implements Initializable {
                 new StringFilter<>("Name", Persona::getNombre),
                 new IntegerFilter<>("Age", Persona::getEdad)
         );
-        mfxTable.getItems().addAll(viewModel.getState().get().getPersonas());
+        mfxTable.setItems(viewModel.getState().get().getPersonas());
+        mfxTable.getSelectionModel().selectionProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                newValue.values().stream().findFirst().ifPresent(p -> {
+                    nombre.setText(p.getNombre());
+                    edad.setText(p.getEdad().toString());
+                });
+            }
+        });
 
     }
 
