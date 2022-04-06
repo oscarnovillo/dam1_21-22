@@ -4,18 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a6427cb-bc57-43fb-9d33-774f1e89807f" name="Changes" comment="a">
-      <change beforePath="$PROJECT_DIR$/../Ficheros/src/main/java/config/Configuracion.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Ficheros/src/main/java/config/Configuracion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ficheros/src/main/java/servicios/impl/ServiciosClientesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Ficheros/src/main/java/servicios/impl/ServiciosClientesImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ficheros/src/main/java/ui/MainCDI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Ficheros/src/main/java/ui/MainCDI.java" afterDir="false" />
+    <list default="true" id="7a6427cb-bc57-43fb-9d33-774f1e89807f" name="Changes" comment="adfgdfgdfg">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../javafx11/src/main/java/common/Constantes.java" beforeDir="false" afterPath="$PROJECT_DIR$/../javafx11/src/main/java/common/Constantes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../javafx11/src/main/java/ui/MainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/../javafx11/src/main/java/ui/MainFX.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../javafx11/src/main/resources/fxml/principal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../javafx11/src/main/resources/fxml/principal.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../javafx11/src/main/resources/textosFXML.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../javafx11/src/main/resources/textosI18N.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../javafx11/src/main/resources/i18n/textosI18N.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../javafx11/src/main/resources/textosI18N_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../javafx11/src/main/resources/i18n/textosI18N_en.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../javafx11/src/main/resources/textosI18N_es.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../javafx11/src/main/resources/i18n/textosI18N_es.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +32,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
@@ -56,7 +49,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../javafx11" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.21149425" />
@@ -132,6 +125,7 @@
       <workItem from="1648750433291" duration="2157000" />
       <workItem from="1648796314600" duration="2365000" />
       <workItem from="1649148362784" duration="842000" />
+      <workItem from="1649195266111" duration="810000" />
     </task>
     <task id="LOCAL-00001" summary="a">
       <created>1647778744775</created>
@@ -161,7 +155,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647782661547</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="adfgdfgdfg">
+      <created>1649195304349</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1649195304349</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -177,11 +178,11 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="a" />
-    <option name="LAST_COMMIT_MESSAGE" value="a" />
+    <MESSAGE value="adfgdfgdfg" />
+    <option name="LAST_COMMIT_MESSAGE" value="adfgdfgdfg" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
