@@ -16,7 +16,7 @@ public class PrincipalViewModel {
     private ServiciosPersonas serviciosPersonas;
 
     public PrincipalViewModel() {
-        _state = new SimpleObjectProperty<>(new PrincipalState(FXCollections.observableArrayList(),null));
+        _state = new SimpleObjectProperty<>(new PrincipalState(FXCollections.observableArrayList(new Persona("kk",88)),null));
     }
 
 
@@ -32,9 +32,10 @@ public class PrincipalViewModel {
 
     public void addPersona(Persona persona){
         serviciosPersonas.addPersona(persona);
-        _state.get().getPersonas().clear();
-        _state.get().getPersonas().addAll(serviciosPersonas.getPersonas());
-
+        _state.get().getPersonas().add(persona);
+//        _state.get().getPersonas().clear();
+//        _state.get().getPersonas().addAll(serviciosPersonas.getPersonas());
+//
     }
 
     public void updatePersona(Persona persona) {

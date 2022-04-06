@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a6427cb-bc57-43fb-9d33-774f1e89807f" name="Changes" comment="adfgdfgdfg">
+      <change beforePath="$PROJECT_DIR$/../Ficheros/src/main/java/dao/impl/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Ficheros/src/main/java/dao/impl/DataBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../javafx11/src/main/java/ui/pantallas/principal/PrincipalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../javafx11/src/main/java/ui/pantallas/principal/PrincipalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../javafx11/src/main/java/ui/pantallas/principal/PrincipalViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../javafx11/src/main/java/ui/pantallas/principal/PrincipalViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../javafx11/src/main/resources/fxml/principal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../javafx11/src/main/resources/fxml/principal.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../javafx11/src/main/resources/fxml/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/../javafx11/src/main/resources/fxml/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,6 +131,7 @@
       <workItem from="1648796314600" duration="2365000" />
       <workItem from="1649148362784" duration="842000" />
       <workItem from="1649195266111" duration="810000" />
+      <workItem from="1649264326516" duration="2597000" />
     </task>
     <task id="LOCAL-00001" summary="a">
       <created>1647778744775</created>

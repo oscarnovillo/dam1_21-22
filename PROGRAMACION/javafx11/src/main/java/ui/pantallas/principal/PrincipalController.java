@@ -5,9 +5,13 @@ import dao.DaoPersonas;
 import domain.ServiciosPersonas;
 import domain.modelo.Persona;
 import io.github.palexdev.materialfx.controls.*;
+import io.github.palexdev.materialfx.controls.cell.MFXTableRowCell;
+import io.github.palexdev.materialfx.filter.IntegerFilter;
+import io.github.palexdev.materialfx.filter.StringFilter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -18,12 +22,15 @@ import javafx.scene.input.MouseEvent;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class PrincipalController implements Initializable {
 
 
+    @FXML
+    private MFXTableView<Persona> mfxTable;
     @FXML
     private Constantes common;
 
@@ -63,6 +70,7 @@ public class PrincipalController implements Initializable {
     @FXML
     private void saludar() {
         viewModel.addPersona(new Persona(nombreDefecto, 10));
+
 
         String nombre = !txtNombre.getText().isBlank()
                 ? txtNombre.getText() : nombreDefecto;
@@ -110,6 +118,20 @@ public class PrincipalController implements Initializable {
                 });
             }
         });
+
+        // tabla materialFX
+        MFXTableColumn<Persona> nameColumn = new MFXTableColumn<>("nombre", true, Comparator.comparing(Persona::getNombre));
+        MFXTableColumn<Persona> ageColumn = new MFXTableColumn<>("edad", true, Comparator.comparing(Persona::getEdad));
+        nameColumn.setRowCellFactory(persona -> new MFXTableRowCell<>(Persona::getNombre));
+        ageColumn.setRowCellFactory(persona -> new MFXTableRowCell<>(Persona::getEdad) );
+        ageColumn.setAlignment(Pos.CENTER_RIGHT);
+
+        mfxTable.getTableColumns().addAll(nameColumn, ageColumn);
+        mfxTable.getFilters().addAll(
+                new StringFilter<>("Name", Persona::getNombre),
+                new IntegerFilter<>("Age", Persona::getEdad)
+        );
+        mfxTable.getItems().addAll(viewModel.getState().get().getPersonas());
 
     }
 

@@ -80,7 +80,7 @@ public class DataBase {
 
     public boolean saveClientes(List<Cliente> clientes) {
 
-        try (FileWriter w = new FileWriter("data/json")) {
+        try (FileWriter w = new FileWriter(configuracion.getPathDatos())) {
             gson.toJson(clientes, w);
         } catch (IOException e) {
             log.error(e.getMessage(), e);
