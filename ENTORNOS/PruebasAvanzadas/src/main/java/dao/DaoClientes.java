@@ -1,9 +1,11 @@
 package dao;
 
 import domain.modelo.Cliente;
+import jakarta.inject.Inject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class DaoClientes {
 
@@ -11,13 +13,11 @@ public class DaoClientes {
     private DataBase db;
 
 
+    @Inject
     public DaoClientes(DataBase db) {
         this.db = db;
     }
 
-    public DaoClientes() {
-        this.db = new DataBase();
-    }
 
     public boolean updateCliente(Cliente c) {
         boolean ok = false;
@@ -50,5 +50,31 @@ public class DaoClientes {
 
     public List<Cliente> getClientes() {
         return db.loadClientes();
+    }
+
+    public boolean eliminarCliente(String dni) {
+        boolean ok = false;
+        List<Cliente> clientes = db.loadClientes();
+
+        Optional<Cliente> optionalCliente = clientes.stream().filter(c -> c.getDni().equals(dni)).findFirst();
+        optionalCliente.ifPresent(clientes::remove);
+        ok = optionalCliente.isPresent();
+
+        optionalCliente.ifPresent(c -> db.saveClientes(clientes));
+
+        return ok;
+
+    }
+
+    public Cliente buscarCliente(String dni) {
+        Cliente encontrado = null;
+        List<Cliente> clientes = db.loadClientes();
+
+        Optional<Cliente> optionalCliente = clientes.stream().filter(c -> c.getDni().equals(dni)).findFirst();
+        if (optionalCliente.isPresent())
+            encontrado = optionalCliente.get();
+
+
+        return encontrado;
     }
 }

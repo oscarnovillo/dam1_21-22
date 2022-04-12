@@ -21,7 +21,7 @@ public class MainConfigInterno {
         try  {
 
             Properties p = new Properties();
-            p.load(MainConfigInterno.class.getClassLoader().getResourceAsStream("confi.properties"));
+            p.load(MainConfigInterno.class.getClassLoader().getResourceAsStream("config/config.properties"));
 
             System.out.println(p.getProperty("path_datos"));
 

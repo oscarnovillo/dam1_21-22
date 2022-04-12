@@ -38,7 +38,8 @@ class DaoClientesTest {
     @DisplayName("Test de getCliente")
     void getClientes() {
 
-        MainClientes.main(null);
+        MainClientes m = new MainClientes(null);
+        m.main();
 
         assertThat(systemOut.getLines()).containsExactly("to out");
 

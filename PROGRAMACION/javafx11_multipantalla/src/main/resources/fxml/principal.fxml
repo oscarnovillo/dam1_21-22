@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<BorderPane fx:id="root" prefHeight="400.0" prefWidth="600.0"  stylesheets="@/css/style.css"
+            xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ui.pantallas.principal.PrincipalController">
+    <center>
+        <StackPane prefHeight="150.0" prefWidth="200.0">
+            <AnchorPane styleClass="background" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                <children>
+                    <MFXTextField fx:id="txtField" layoutX="274.0" layoutY="71.0"/>
+                    <MFXButton fx:id="button" layoutX="289.0" layoutY="157.0" mnemonicParsing="false"
+                               onAction="#cambiarcss" text="Button">
+                        <font>
+                            <Font name="Alef Regular" size="12.0"/>
+                        </font>
+                    </MFXButton>
+                    <TextField fx:id="txtNormal" layoutX="242.0" layoutY="120.0"/>
+                    <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                </children>
+            </AnchorPane>
+        </StackPane>
+    </center>
+    <top>
+        <MenuBar>
+            <menus>
+                <Menu fx:id="menuFile" mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem fx:id="menuItemNew" mnemonicParsing="false" text="New"/>
+                        <MenuItem fx:id="menuItemOpen" mnemonicParsing="false" onAction="#cargarPantalla1" text="Open"/>
+                        <MenuItem fx:id="menuItemSave" mnemonicParsing="false" text="Save"/>
+                        <MenuItem fx:id="menuItemSaveAs" mnemonicParsing="false" text="Save As..."/>
+                        <MenuItem fx:id="menuItemClose" mnemonicParsing="false" text="Close"/>
+                        <MenuItem fx:id="menuItemExit" mnemonicParsing="false" onAction="#exit" text="Exit"/>
+                    </items>
+                </Menu>
+                <Menu fx:id="menuEdit" mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem fx:id="menuItemUndo" mnemonicParsing="false" text="Undo"/>
+                        <MenuItem fx:id="menuItemRedo" mnemonicParsing="false" text="Redo"/>
+                        <MenuItem fx:id="menuItemCut" mnemonicParsing="false" text="Cut"/>
+                        <MenuItem fx:id="menuItemCopy" mnemonicParsing="false" text="Copy"/>
+                        <MenuItem fx:id="menuItemPaste" mnemonicParsing="false" text="Paste"/>
+                        <MenuItem fx:id="menuItemDelete" mnemonicParsing="false" text="Delete"/>
+                        <MenuItem fx:id="menuItemSelectAll" mnemonicParsing="false" text="Select All"/>
+                    </items>
+                </Menu>
+                <Menu fx:id="menuHelp" mnemonicParsing="false" onAction="#help" onShowing="#help" text="Help">
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+</BorderPane>

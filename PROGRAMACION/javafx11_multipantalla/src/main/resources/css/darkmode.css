@@ -1,16 +1,17 @@
 .background {
-    -fx-background-color: #1d1d1d;
+    -fx-background-color: #FFFFFF;
     -fx-border-width: 10px;
     -fx-border-color: #b80909;
 }
 .button:hover {
     -fx-background-color: red;
-    -fx-font-family: 'Grape Nuts', cursive;
 }
-#txtNombre{
-    -fx-background-color: black;
-    -fx-text-fill: white;
+.text-field-mio{
+    -fx-background-color: #1d1d1d;
     -fx-border-width: 10px;
     -fx-border-color: #b80909;
     -fx-font-family: 'Grape Nuts', cursive;
+
+
+
 }

@@ -63,8 +63,13 @@ public class PrincipalController implements Initializable {
     @FXML
     private TextField txtNombre;
 
+
     public PrincipalController() {
         viewModel = new PrincipalViewModel(new ServiciosPersonas(new DaoPersonas()));
+    }
+
+    public PrincipalController(PrincipalViewModel viewModel) {
+        this.viewModel = viewModel;
     }
 
     @FXML

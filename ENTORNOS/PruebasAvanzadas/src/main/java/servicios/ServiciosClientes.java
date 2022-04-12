@@ -2,6 +2,7 @@ package servicios;
 
 import dao.DaoClientes;
 import domain.modelo.Cliente;
+import jakarta.inject.Inject;
 
 import java.util.List;
 
@@ -9,6 +10,7 @@ public class ServiciosClientes {
 
     private DaoClientes dao;
 
+    @Inject
     public ServiciosClientes(DaoClientes dao) {
         this.dao = dao;
     }
@@ -27,5 +29,14 @@ public class ServiciosClientes {
 
     public List<Cliente> getClientes() {
         return dao.getClientes();
+    }
+
+    public boolean eliminarCliente(String dni) {
+        return dao.eliminarCliente(dni);
+    }
+
+
+    public Cliente buscarCliente(String dni) {
+        return dao.buscarCliente(dni);
     }
 }

@@ -5,7 +5,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="853.0" prefWidth="873.0" styleClass="background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.pantallas.principal.PrincipalController">
+<AnchorPane prefHeight="853.0" prefWidth="873.0" styleClass="background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1"
+fx:controller="ui.pantallas.principal.PrincipalController">
    <children>
        <TextField fx:id="txtNombre" layoutX="186.0" layoutY="63.0" promptText="%NOMBRE" />
       <Button layoutX="261.0" layoutY="175.0" mnemonicParsing="false" onAction="#saludar" text="%Bienvenido" />

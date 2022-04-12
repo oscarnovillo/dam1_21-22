@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" styleClass="background"  prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.pantallas.pantalla1.Pantalla1Controller">
+   <children>
+      <MFXButton layoutX="259.0" layoutY="157.0" mnemonicParsing="false" text="Button" onAction="#click"/>
+   </children>
+</AnchorPane>

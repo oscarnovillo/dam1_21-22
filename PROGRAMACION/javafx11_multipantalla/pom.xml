@@ -37,12 +37,18 @@
             <artifactId>weld-se-core</artifactId>
             <version>4.0.3.Final</version>
         </dependency>
-        <dependency>
-            <groupId>jakarta.platform</groupId>
-            <artifactId>jakarta.jakartaee-web-api</artifactId>
-            <version>9.1.0</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>jakarta.platform</groupId>-->
+<!--            <artifactId>jakarta.jakartaee-web-api</artifactId>-->
+<!--            <version>9.1.0</version>-->
+<!--        </dependency>-->
 
+        <!-- com.pixelduke:fxribbon:1.2.2 -->
+        <dependency>
+            <groupId>com.pixelduke</groupId>
+            <artifactId>fxribbon</artifactId>
+            <version>1.2.2</version>
+        </dependency>
 
         <dependency>
             <groupId>io.github.palexdev</groupId>

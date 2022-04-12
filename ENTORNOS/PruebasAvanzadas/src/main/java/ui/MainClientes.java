@@ -1,51 +1,100 @@
 package ui;
 
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.JsonSerializer;
-import config.Configuracion;
-import dao.DaoClientes;
-import dao.DataBase;
 import domain.modelo.Cliente;
+import jakarta.inject.Inject;
 import servicios.ServiciosClientes;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.Scanner;
 
 public class MainClientes {
 
+    private ServiciosClientes serviciosClientes;
 
-    public static void main(String[] args) {
+    @Inject
+    public MainClientes(ServiciosClientes sc) {
+        this.serviciosClientes = sc;
+    }
 
-        ServiciosClientes sc = new ServiciosClientes(
-                new DaoClientes(
-                        new DataBase(
-                                new GsonBuilder()
-                                        .registerTypeAdapter(LocalDateTime.class,
-                                                (JsonDeserializer<LocalDateTime>) (json, type, jsonDeserializationContext) ->
-                                                        LocalDateTime.parse(json.getAsJsonPrimitive().getAsString()))
-                                        .registerTypeAdapter(LocalDateTime.class,
-                                                (JsonSerializer<LocalDateTime>) (localDateTime, type, jsonSerializationContext) ->
-                                                        new JsonPrimitive(localDateTime.toString()))
-                                        .registerTypeAdapter(LocalDate.class,
-                                                (JsonDeserializer<LocalDate>) (json, type, jsonDeserializationContext) ->
-                                                        LocalDate.parse(json.getAsJsonPrimitive().getAsString()))
-                                        .registerTypeAdapter(LocalDate.class,
-                                                (JsonSerializer<LocalDate>) (localDateTime, type, jsonSerializationContext) ->
-                                                        new JsonPrimitive(localDateTime.toString()))
-                                        .create(),
-                                Configuracion.getInstance())));
-//
-//        sc.addCliente(new Cliente("alex","89"));
-//        sc.addCliente(new Cliente("jorge","99"));
+    public void main() {
 
-        System.out.println(sc.getClientes());
+        //menu de opciones
+        Scanner sc = new Scanner(System.in);
+        String dni = null;
+        String nombre = null;
+        boolean hecho = false;
+        int opcion = 0;
+        do {
+            System.out.println("1. Listar clientes");
+            System.out.println("2. Buscar cliente");
+            System.out.println("3. Añadir cliente");
+            System.out.println("4. Modificar cliente");
+            System.out.println("5. Eliminar cliente");
+            System.out.println("6. Salir");
+            System.out.println("Elige una opción: ");
+            opcion = sc.nextInt();
+            sc.nextLine();
+            switch (opcion) {
+                case 1:
+                    System.out.println(serviciosClientes.getClientes());
+                    break;
+                case 2:
+                    System.out.println("Introduce el dni del cliente a eliminar: ");
+                    dni = sc.nextLine();
+                    Cliente encontrado = serviciosClientes.buscarCliente(dni);
+                    if (encontrado != null) {
+                        System.out.println(encontrado);
 
-        Cliente.builder().nombre("jj").build();
-        sc.updateCliente(new Cliente("sergio", "99"));
-
-        System.out.println(sc.getClientes());
+                    } else {
+                        System.out.println("No se ha encontrado el cliente");
+                    }
+                    break;
+                case 3:
+                    //pedir datos del cliente
+                    System.out.println("Introduce el dni: ");
+                    dni = sc.nextLine();
+                    System.out.println("Introduce el nombre: ");
+                    nombre = sc.nextLine();
+                    hecho = serviciosClientes.addCliente(new Cliente(dni, nombre));
+                    if (hecho) {
+                        System.out.println("Cliente añadido correctamente");
+                    } else {
+                        System.out.println("No se ha podido añadir el cliente");
+                    }
+                    break;
+                case 4:
+                    //pedir datos del cliente
+                    System.out.println("Introduce el dni: ");
+                    dni = sc.nextLine();
+                    System.out.println("Introduce el nombre: ");
+                    nombre = sc.nextLine();
+                    hecho = serviciosClientes.updateCliente(new Cliente(dni, nombre));
+                    if (hecho) {
+                        System.out.println("Cliente modificado correctamente");
+                    }
+                    else {
+                        System.out.println("No se ha podido modificar el cliente");
+                    }
+                    break;
+                case 5:
+                    System.out.println("Eliminar cliente");
+                    // pedir dni del cliente
+                    System.out.println("Introduce el dni del cliente a eliminar: ");
+                    dni = sc.nextLine();
+                    hecho = serviciosClientes.eliminarCliente(dni);
+                    if (hecho) {
+                        System.out.println("Cliente eliminado correctamente");
+                    }
+                    else {
+                        System.out.println("No se ha podido eliminar el cliente");
+                    }
+                    break;
+                case 6:
+                    System.out.println("Saliendo...");
+                    break;
+                default:
+                    System.out.println("Opción incorrecta");
+            }
+        } while (opcion != 6);
 
 
     }
