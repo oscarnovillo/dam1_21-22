@@ -19,14 +19,6 @@ public class CDIJavafx extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        Properties p = new Properties();
-        try {
-            p.load(getClass().getClassLoader().getResourceAsStream("config/config.properties"));
-            System.out.println(p.getProperty("pathDatos"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
         SeContainerInitializer initializer = SeContainerInitializer.newInstance();
         final SeContainer container = initializer.initialize();
         primaryStage.setMinWidth(800);

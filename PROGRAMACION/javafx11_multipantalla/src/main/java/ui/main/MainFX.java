@@ -19,14 +19,7 @@ public class MainFX {
 
     public void start(@Observes @StartupScene Stage stage) throws IOException {
         try {
-
             ResourceBundle r = ResourceBundle.getBundle("/i18n/textos");
-
-//			SeContainerInitializer initializer = SeContainerInitializer.newInstance();
-//			final SeContainer container = initializer.initialize();
-//			FXMLLoader loaderMenu = new FXMLLoader(
-//					getClass().getResource("/hello-world.fxml"));
-//			loaderMenu.setController(container.select(FXController.class).get());
 
             fxmlLoader.setResources(r);
             Parent fxmlParent = fxmlLoader.load(getClass().getResourceAsStream("/fxml/principal.fxml"));

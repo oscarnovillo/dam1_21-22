@@ -1,30 +1,51 @@
 package ui.pantallas.principal;
 
 
+import domain.modelo.Usuario;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
+import jakarta.enterprise.inject.Instance;
 import jakarta.inject.Inject;
-import javafx.animation.*;
+import javafx.animation.Interpolator;
+import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
+import javafx.scene.Node;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import javafx.util.Duration;
+import lombok.extern.log4j.Log4j2;
+import ui.pantallas.common.BasePantallaController;
+import ui.pantallas.common.Pantallas;
+import ui.pantallas.login.LoginController;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Optional;
 
+@Log4j2
 public class PrincipalController {
 
-    private final FXMLLoader fxmlloaderPantalla;
+
+    // objeto especial para DI
+    Instance<Object> instance;
+
+    @FXML
+    private MenuBar menuPrincipal;
     private Stage primaryStage;
+
+    private Usuario actualUser;
+
+    public Usuario getActualUser() {
+        return actualUser;
+    }
+
     @FXML
     private BorderPane root;
     @FXML
@@ -33,31 +54,82 @@ public class PrincipalController {
     private MFXTextField txtField;
     @FXML
     private MFXButton button;
-    private AnchorPane panePantalla;
+
+    private Alert alert;
+
+    private Pane pantallaBienvenida;
 
 
     @Inject
-    public PrincipalController(FXMLLoader fxmlloaderPantalla) {
-
-
-//        System.out.println(configuracion.getPathDatos());
-        this.fxmlloaderPantalla = fxmlloaderPantalla;
+    public PrincipalController(Instance<Object> instance) {
+       this.instance = instance;
+       alert= new Alert(Alert.AlertType.NONE);
     }
 
 
-    public void cargarPantalla1() {
+    public void cargarPantalla(Pantallas pantalla) {
+
+        switch (pantalla) {
+//            case LISTADO:
+//                cambioPantalla(cargarPantalla(pantalla.getRuta()));
+//                break;
+            case PANTALLA1:
+                if (pantallaBienvenida == null){
+                    pantallaBienvenida = cargarPantalla(pantalla.getRuta());
+                }
+
+                cambioPantalla(pantallaBienvenida);
+                break;
+            default:
+                cambioPantalla(cargarPantalla(pantalla.getRuta()));
+                break;
+        }
+    }
+
+
+    public void sacarAlertError(String mensaje)
+    {
+        alert.setAlertType(Alert.AlertType.ERROR);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
+    }
+
+
+    private Pane cargarPantalla(String ruta) {
+        Pane panePantalla = null;
         try {
-            if (panePantalla == null) {
-                panePantalla = fxmlloaderPantalla.load(getClass().getResourceAsStream("/fxml/pantalla1.fxml"));
 
-//            pantallaController = fxmlloaderPantalla.getController();
-//
-//            pantallaController.boton.setText("conseguido2");
-//            pantallaController.setP(this);
-//            pantallaController.cargarPepes(pepes);
-            }
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setControllerFactory(param -> instance.select(param).get());
+            panePantalla = fxmlLoader.load(getClass().getResourceAsStream(ruta));
+            BasePantallaController pantallaController = fxmlLoader.getController();
+            pantallaController.setPrincipalController(this);
+            pantallaController.principalCargado();
 
-//            FadeTransition fade = new FadeTransition();
+
+        } catch (IOException e) {
+            log.error(e.getMessage(),e);
+        }
+        return panePantalla;
+    }
+
+
+
+    public void loginHecho(Usuario usuario) {
+        actualUser = usuario;
+        menuPrincipal.setVisible(true);
+        cargarPantalla(Pantallas.PANTALLA1);
+    }
+
+    public void logout() {
+        actualUser = null;
+        menuPrincipal.setVisible(false);
+        cargarPantalla(Pantallas.LOGIN);
+    }
+
+    private void cambioPantalla(Pane pantallaNueva) {
+
+        //            FadeTransition fade = new FadeTransition();
 //            fade.setNode(root.getCenter());
 //            fade.setDuration(Duration.millis(2000));
 //            fade.setCycleCount(1);
@@ -68,25 +140,7 @@ public class PrincipalController {
 //            fade.setOnFinished(event -> {
 //                root.setCenter(panePantalla);
 //            });
-
-            StackPane stackPane = (StackPane)root.getCenter();
-
-            stackPane.getChildren().add(0,panePantalla);
-
-            ScaleTransition scaleTransition = new ScaleTransition();
-            scaleTransition.setNode(stackPane.getChildren().get(1));
-            scaleTransition.setDuration(Duration.millis(500));
-            scaleTransition.setFromX(stackPane.getChildren().get(1).getScaleX());
-            scaleTransition.setFromY(stackPane.getChildren().get(1).getScaleY());
-            scaleTransition.setToX(0);
-            scaleTransition.setToY(0);
-            scaleTransition.setInterpolator(Interpolator.EASE_OUT);
-            scaleTransition.play();
-            scaleTransition.setOnFinished(event -> {
-                stackPane.getChildren().remove(1);
-                     } );
-
-//            TranslateTransition translate = new TranslateTransition();
+        //            TranslateTransition translate = new TranslateTransition();
 //            translate.setNode(stackPane.getChildren().get(1));
 //            translate.setDuration(Duration.millis(1000));
 //            translate.setCycleCount(1);
@@ -98,27 +152,35 @@ public class PrincipalController {
 //                stackPane.getChildren().remove(1);
 //            });
 
-//
-//            RotateTransition rotate = new RotateTransition();
-//            rotate.setNode(root.getCenter());
-//            rotate.setDuration(Duration.millis(2000));
-//            rotate.setCycleCount(1);
-//            rotate.setInterpolator(Interpolator.LINEAR);
-//            rotate.setFromAngle(0);
-//            rotate.setToAngle(360);
-//            rotate.play();
-//            rotate.setOnFinished(event -> {
-//                root.setCenter(panePantalla);
-//            });
+        StackPane stackPane = (StackPane) root.getCenter();
 
-            //root.setCenter(panePantalla);
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (stackPane.getChildren().get(0) != pantallaNueva) {
+
+            stackPane.getChildren().add(0, pantallaNueva);
+
+            ScaleTransition scaleTransition = new ScaleTransition();
+            scaleTransition.setNode(stackPane.getChildren().get(1));
+            scaleTransition.setDuration(Duration.millis(500));
+            scaleTransition.setFromX(stackPane.getChildren().get(1).getScaleX());
+            scaleTransition.setFromY(stackPane.getChildren().get(1).getScaleY());
+            scaleTransition.setToX(0);
+            scaleTransition.setToY(0);
+            scaleTransition.setInterpolator(Interpolator.EASE_OUT);
+            scaleTransition.play();
+            scaleTransition.setOnFinished(event -> {
+                Node node = stackPane.getChildren().remove(1);
+                node.setScaleX(1);
+                node.setScaleY(1);
+            });
         }
+
+//        root.setCenter(pantallaNueva);
     }
 
 
     public void initialize() {
+        menuPrincipal.setVisible(false);
+        cargarPantalla(Pantallas.LOGIN);
 
     }
 
@@ -163,5 +225,33 @@ public class PrincipalController {
         primaryStage.getScene().getRoot().getStylesheets().clear();
         primaryStage.getScene().getRoot().getStylesheets().add(getClass().getResource("/css/darkmode.css").toExternalForm());
 
+    }
+
+    @FXML
+    private void menuClick(ActionEvent actionEvent) {
+        switch (((MenuItem)actionEvent.getSource()).getId())
+        {
+            case "menuItemPantalla1":
+                cargarPantalla(Pantallas.PANTALLA1);
+                break;
+            case "menuItemListado":
+                cargarPantalla(Pantallas.LISTADO);
+                break;
+            case "menuItemLogout":
+                logout();
+                break;
+        }
+
+
+    }
+
+    public double getHeight() {
+        return root.getScene().getWindow().getHeight();
+    }
+
+    public double getWidth()
+    {
+//        return 600;
+        return root.getScene().getWindow().getWidth();
     }
 }

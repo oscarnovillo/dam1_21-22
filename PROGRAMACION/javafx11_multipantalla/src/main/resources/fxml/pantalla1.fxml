@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="400.0" styleClass="background"  prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.pantallas.pantalla1.Pantalla1Controller">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="background" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.pantallas.pantalla1.Pantalla1Controller">
    <children>
-      <MFXButton layoutX="259.0" layoutY="157.0" mnemonicParsing="false" text="Button" onAction="#click"/>
+      <MFXButton fx:id="btChorra"  layoutX="255.0" layoutY="254.0" mnemonicParsing="false" onAction="#click" text="Button" />
+      <Label fx:id="lbBienvenido"  styleClass="bienvenida" layoutX="63.0" layoutY="99.0" prefHeight="64.0" prefWidth="494.0" text="Label" />
+      <CheckBox  fx:id="checkState" layoutX="63.0" layoutY="200.0" mnemonicParsing="false" text="CheckBox" />
    </children>
 </AnchorPane>
