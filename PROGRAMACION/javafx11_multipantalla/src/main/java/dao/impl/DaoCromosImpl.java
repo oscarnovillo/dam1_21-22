@@ -18,6 +18,10 @@ public class DaoCromosImpl implements DaoCromos {
 
     @Override
     public List<Cromo> loadCromos() {
-        return List.of(new Cromo("marvel",1,"descripcion"));
+        return List.of(
+                new Cromo("marvel",1,"descripcion"),
+                new Cromo("marvel",2,"descripcion"),
+                new Cromo("marvel",3,"descripcion"),
+                new Cromo("marvel",4,"descripcion"));
     }
 }

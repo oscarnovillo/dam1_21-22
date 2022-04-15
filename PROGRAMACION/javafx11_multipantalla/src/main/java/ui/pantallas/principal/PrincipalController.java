@@ -1,6 +1,7 @@
 package ui.pantallas.principal;
 
 
+import domain.modelo.Cromo;
 import domain.modelo.Usuario;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -41,10 +42,12 @@ public class PrincipalController {
     private Stage primaryStage;
 
     private Usuario actualUser;
+    private Cromo cromoSeleccionado;
 
     public Usuario getActualUser() {
         return actualUser;
     }
+    public Cromo getActualCromo(){return cromoSeleccionado;}
 
     @FXML
     private BorderPane root;
@@ -65,6 +68,9 @@ public class PrincipalController {
        this.instance = instance;
        alert= new Alert(Alert.AlertType.NONE);
     }
+
+
+
 
 
     public void cargarPantalla(Pantallas pantalla) {
@@ -253,5 +259,13 @@ public class PrincipalController {
     {
 //        return 600;
         return root.getScene().getWindow().getWidth();
+    }
+
+    public void onSeleccionCromo(Cromo p) {
+        this.cromoSeleccionado = p;
+        cargarPantalla(Pantallas.DETALLE);
+
+
+
     }
 }

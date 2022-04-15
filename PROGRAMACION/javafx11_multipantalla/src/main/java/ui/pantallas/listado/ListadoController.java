@@ -27,8 +27,9 @@ public class ListadoController extends BasePantallaController {
 
     @FXML
     private void ver(ActionEvent actionEvent) {
-        getPrincipalController().cargarPantalla(Pantallas.DETALLE);
-        //tabla.getSelectionModel().getSelection().values().stream().findFirst().get();
+//        getPrincipalController().cargarPantalla(Pantallas.DETALLE);
+        tabla.getSelectionModel().getSelection().values().stream().findFirst().ifPresent(cromo -> getPrincipalController().onSeleccionCromo(cromo));
+
     }
 
     public void initialize() {
@@ -42,15 +43,6 @@ public class ListadoController extends BasePantallaController {
 
 
         tabla.getTableColumns().addAll(collecionColumn, descriptionColumn, numberColumn);
-
-        tabla.getSelectionModel().selectionProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                newValue.values().stream().findFirst().ifPresent(p -> {
-
-                });
-            }
-        });
-
 
         viewModel.getState().addListener((observableValue, listadoState, listadoStateNew) -> {
             if (listadoStateNew.getError()!=null){

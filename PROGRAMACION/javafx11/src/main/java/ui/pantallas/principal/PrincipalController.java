@@ -111,6 +111,9 @@ public class PrincipalController implements Initializable {
         viewModel.getState().addListener((observable, oldValue, newValue) -> {
             if (newValue.getError() != null) {
                 //sacar un alert
+                Alert a = new Alert(Alert.AlertType.ERROR);
+                a.setContentText(newValue.getError());
+                a.showAndWait();
             }
         });
 
