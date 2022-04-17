@@ -26,7 +26,8 @@ public class PruebasIntegracion {
         // Given
         SystemIn sin = new SystemIn("3", "34", "Juan", "6");
 
-       Files.delete(Paths.get("test/data/cliente.json"));
+        if (Files.exists(Paths.get("test/data/cliente.json")))
+            Files.delete(Paths.get("test/data/cliente.json"));
 
         // When
         sin.execute(() -> {

@@ -1,42 +1,17 @@
 package servicios;
 
-import dao.DaoClientes;
 import domain.modelo.Cliente;
-import jakarta.inject.Inject;
 
 import java.util.List;
 
-public class ServiciosClientes {
+public interface ServiciosClientes {
+    boolean addCliente(Cliente c);
 
-    private DaoClientes dao;
+    boolean updateCliente(Cliente c);
 
-    @Inject
-    public ServiciosClientes(DaoClientes dao) {
-        this.dao = dao;
-    }
+    List<Cliente> getClientes();
 
-    public boolean addCliente(Cliente c)
-    {
-        return dao.addCliente(c);
-    }
+    boolean eliminarCliente(String dni);
 
-
-    public boolean updateCliente(Cliente c)
-    {
-        return dao.updateCliente(c);
-    }
-
-
-    public List<Cliente> getClientes() {
-        return dao.getClientes();
-    }
-
-    public boolean eliminarCliente(String dni) {
-        return dao.eliminarCliente(dni);
-    }
-
-
-    public Cliente buscarCliente(String dni) {
-        return dao.buscarCliente(dni);
-    }
+    Cliente buscarCliente(String dni);
 }

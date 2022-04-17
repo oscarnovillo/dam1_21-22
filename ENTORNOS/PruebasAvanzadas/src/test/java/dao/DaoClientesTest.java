@@ -1,57 +1,104 @@
 package dao;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.enterprise.context.RequestScoped;
-import lombok.Data;
-import org.jboss.weld.environment.se.bindings.Parameters;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
+import domain.modelo.Cliente;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import ui.MainClientes;
 import uk.org.webcompere.systemstubs.jupiter.SystemStub;
 import uk.org.webcompere.systemstubs.jupiter.SystemStubsExtension;
 import uk.org.webcompere.systemstubs.stream.SystemIn;
 import uk.org.webcompere.systemstubs.stream.SystemOut;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.fail;
+import static org.mockito.Mockito.*;
 
 @TestInstance(Lifecycle.PER_METHOD)
 @ExtendWith(SystemStubsExtension.class)
+@ExtendWith(MockitoExtension.class)
 class DaoClientesTest {
 
-    //setup
-    private DaoClientes daoClientes;
+    //testar
+    private DaoClientesImpl daoClientes;
 
-    @SystemStub
-    private SystemOut systemOut;
+    //mockear
+    @Mock
+    private DataBase database;
 
-    @SystemStub
-    private SystemIn systemIn;
 
-//    public DaoClientesTest() {
-//        System.out.println("DaoClientesTest");
-//    }
-    @Test
-    @DisplayName("Test de getCliente")
-    void getClientes() {
+    @BeforeEach
+    private void setUp() {
+        daoClientes = new DaoClientesImpl(database);
+    }
 
-        MainClientes m = new MainClientes(null);
-        m.main();
+    @Nested
+    @DisplayName("Pruebas de get clientes  ")
+    class GetClientesTest {
 
-        assertThat(systemOut.getLines()).containsExactly("to out");
+
+        @Test
+        @DisplayName("devolver lista de clientes")
+        void getClientes() {
+
+            //Given
+            List<Cliente> base = List.of(new Cliente("pedro","123"));
+            when(database.loadClientes()).thenReturn(base);
+
+            //When
+            List<Cliente> respuesta = daoClientes.getClientes();
+
+            //Then
+            assertAll(() -> assertThat(respuesta).containsAll(base),
+                    () -> assertThat(respuesta.size()).isEqualTo(1));
+
+        }
+
+        @Test
+        @DisplayName("buscar cliente encontrado")
+        void buscarClienteExiste() {
+            //Given
+            Cliente baseCliente = new Cliente("pedro","123");
+            List<Cliente> base = List.of(baseCliente);
+            when(database.loadClientes()).thenReturn(base);
+
+            //When
+            Cliente respuesta = daoClientes.buscarCliente("123");
+
+
+            //Then
+            assertAll(() -> assertThat(respuesta.getDni()).isEqualTo(baseCliente.getDni()),
+                    () -> assertThat(respuesta.getNombre()).isEqualTo(baseCliente.getNombre()));
+
+
+
+        }
+
+
+        @Test
+//        @Disabled
+        @DisplayName("buscar cliente no encontrado")
+        void buscarClienteNoExiste() {
+            //Given
+            Cliente baseCliente = new Cliente("pedro","123");
+            List<Cliente> base = List.of(baseCliente);
+            when(database.loadClientes()).thenReturn(base);
+
+            //When
+            Cliente respuesta = daoClientes.buscarCliente("12");
+
+
+            //Then
+            assertThat(respuesta).isNull();
+        }
 
 
     }
-
-    @Test
-    @DisplayName("Test de getCliente")
-    void getCliente() {
-        fail("Not yet implemented");
-    }
-
 
 
 

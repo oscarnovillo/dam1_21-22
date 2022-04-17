@@ -1,18 +1,20 @@
 package ui;
 
-import dao.DaoClientes;
+import domain.modelo.Cliente;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import servicios.ServiciosClientes;
+import servicios.ServiciosClientesImpl;
 import uk.org.webcompere.systemstubs.jupiter.SystemStub;
 import uk.org.webcompere.systemstubs.jupiter.SystemStubsExtension;
 import uk.org.webcompere.systemstubs.stream.SystemIn;
 import uk.org.webcompere.systemstubs.stream.SystemOut;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static uk.org.webcompere.systemstubs.SystemStubs.withTextFromSystemIn;
 
 
@@ -44,17 +46,14 @@ class MainClientesTest {
     @Test
     @DisplayName("Test menu salir")
     void main() throws Exception {
+        //Given
+        withTextFromSystemIn("3","dni","Juan","6").execute(() -> {
 
-        withTextFromSystemIn("6").execute(() -> {
-
+            //When
             m.main();
-            assertThat(systemOut.getLines()).containsExactly("1. Listar clientes",
-                    "2. Buscar cliente",
-                    "3. Añadir cliente",
-                    "4. Modificar cliente",
-                    "5. Eliminar cliente",
-                    "6. Salir",
-                    "Elige una opción: ",
+
+            //Then
+            assertThat(systemOut.getLines()).contains("No se ha podido añadir el cliente",
                     "Saliendo...");
         });
 
@@ -62,10 +61,31 @@ class MainClientesTest {
 
 
 
-    private static class ServiciosClientesFake extends ServiciosClientes {
+    private static class ServiciosClientesFake implements ServiciosClientes {
 
-        public ServiciosClientesFake() {
-            super(null);
+        @Override
+        public boolean addCliente(Cliente c) {
+            return false;
+        }
+
+        @Override
+        public boolean updateCliente(Cliente c) {
+            return false;
+        }
+
+        @Override
+        public List<Cliente> getClientes() {
+            return null;
+        }
+
+        @Override
+        public boolean eliminarCliente(String dni) {
+            return false;
+        }
+
+        @Override
+        public Cliente buscarCliente(String dni) {
+            return null;
         }
     }
 }
