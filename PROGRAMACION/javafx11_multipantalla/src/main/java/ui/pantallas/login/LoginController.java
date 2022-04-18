@@ -1,6 +1,7 @@
 package ui.pantallas.login;
 
 import domain.modelo.Usuario;
+import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import jakarta.inject.Inject;
@@ -10,9 +11,10 @@ import ui.pantallas.common.BasePantallaController;
 
 public class LoginController extends BasePantallaController {
 
-
-
     private LoginViewModel loginViewModel;
+
+    @FXML
+    private MFXButton btLogin;
     @FXML
     private MFXPasswordField txtPassword;
     @FXML

@@ -4,6 +4,7 @@ import domain.modelo.Cliente;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ui.MainClientes;
@@ -25,6 +26,7 @@ import static org.mockito.Mockito.*;
 class DaoClientesTest {
 
     //testar
+    @InjectMocks
     private DaoClientesImpl daoClientes;
 
     //mockear
@@ -34,7 +36,7 @@ class DaoClientesTest {
 
     @BeforeEach
     private void setUp() {
-        daoClientes = new DaoClientesImpl(database);
+        
     }
 
     @Nested

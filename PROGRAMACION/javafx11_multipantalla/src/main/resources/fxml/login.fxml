@@ -8,6 +8,6 @@
    <children>
       <MFXPasswordField  fx:id="txtPassword" floatMode="ABOVE" layoutX="225.0" layoutY="210.0" prefHeight="19.0" prefWidth="119.0" promptText="password" />
       <MFXTextField fx:id="txtUserName"  floatMode="BORDER" layoutX="225.0" layoutY="151.0" prefHeight="50.0" prefWidth="119.0" promptText="user" />
-      <MFXButton layoutX="228.0" layoutY="291.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="119.0" onAction="#doLogin"  text="Login" />
+      <MFXButton fx:id="btLogin"  layoutX="228.0" layoutY="291.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="119.0" onAction="#doLogin"  text="Login" />
    </children>
 </AnchorPane>

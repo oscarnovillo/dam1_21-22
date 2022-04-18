@@ -26,7 +26,7 @@ public class MainFX {
             PrincipalController controller = fxmlLoader.getController();
             controller.setStage(stage);
 
-            stage.setScene(new Scene(fxmlParent, 300, 100));
+            stage.setScene(new Scene(fxmlParent));
             stage.getScene().getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
             stage.setTitle(r.getString("app.title"));
             stage.show();

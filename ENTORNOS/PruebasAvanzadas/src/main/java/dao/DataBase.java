@@ -25,31 +25,12 @@ public class DataBase {
 
     private Configuracion configuracion;
 
-//    public DataBase() {
-//        this.gson = new GsonBuilder()
-//                .registerTypeAdapter(LocalDateTime.class,
-//                        (JsonDeserializer<LocalDateTime>) (json, type, jsonDeserializationContext) ->
-//                                LocalDateTime.parse(json.getAsJsonPrimitive().getAsString()))
-//                .registerTypeAdapter(LocalDateTime.class,
-//                        (JsonSerializer<LocalDateTime>) (localDateTime, type, jsonSerializationContext) ->
-//                                new JsonPrimitive(localDateTime.toString()))
-//                .registerTypeAdapter(LocalDate.class,
-//                        (JsonDeserializer<LocalDate>) (json, type, jsonDeserializationContext) ->
-//                                LocalDate.parse(json.getAsJsonPrimitive().getAsString()))
-//                .registerTypeAdapter(LocalDate.class,
-//                        (JsonSerializer<LocalDate>) (localDateTime, type, jsonSerializationContext) ->
-//                                new JsonPrimitive(localDateTime.toString()))
-//                .create();
-//
-//        this.configuracion = Configuracion.getInstance();
-//    }
 
     @Inject
     public DataBase(Gson gson, Configuracion configuracion) {
         this.gson = gson;
         this.configuracion = configuracion;
     }
-
     public List<Cliente> loadClientes() {
         Type userListType = new TypeToken<ArrayList<Cliente>>() {
         }.getType();
