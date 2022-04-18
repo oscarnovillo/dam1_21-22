@@ -31,12 +31,7 @@ public class LoginController extends BasePantallaController {
         loginViewModel.getState().addListener((observableValue, oldState, newState) -> {
             if (newState.getError()!=null)
             {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("Error");
-                alert.setContentText(newState.getError());
-                alert.showAndWait();
-
+               this.getPrincipalController().sacarAlertError(newState.getError());
             }
             if (newState.isLoginOK())
             {
