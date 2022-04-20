@@ -10,7 +10,7 @@ import jakarta.enterprise.util.AnnotationLiteral;
 import java.io.IOException;
 import java.util.Properties;
 
-public class CDIJavafx extends Application {
+public class DIJavafx extends Application {
 
     public static void main(String[] args) {
         launch(args);

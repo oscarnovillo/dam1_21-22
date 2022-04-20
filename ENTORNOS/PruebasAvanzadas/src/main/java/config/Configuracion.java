@@ -10,6 +10,7 @@ import lombok.extern.log4j.Log4j2;
 
 import java.io.IOException;
 import java.util.Properties;
+
 @Getter
 @Log4j2
 @Singleton

@@ -28,7 +28,8 @@ public class ListadoController extends BasePantallaController {
     @FXML
     private void ver(ActionEvent actionEvent) {
 //        getPrincipalController().cargarPantalla(Pantallas.DETALLE);
-        tabla.getSelectionModel().getSelection().values().stream().findFirst().ifPresent(cromo -> getPrincipalController().onSeleccionCromo(cromo));
+        tabla.getSelectionModel().getSelection().values().stream().findFirst()
+                .ifPresent(cromo -> getPrincipalController().onSeleccionCromo(cromo));
 
     }
 

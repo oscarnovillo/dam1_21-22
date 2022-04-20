@@ -36,8 +36,25 @@ class DaoClientesTest {
 
     @BeforeEach
     private void setUp() {
-        
+
+
     }
+
+    @AfterEach
+    private void tearDown() {
+
+    }
+
+    @BeforeAll
+    static void beforeAll() {
+
+    }
+
+    @AfterAll
+    static void afterAll() {
+
+    }
+
 
     @Nested
     @DisplayName("Pruebas de get clientes  ")
@@ -74,8 +91,10 @@ class DaoClientesTest {
 
 
             //Then
-            assertAll(() -> assertThat(respuesta.getDni()).isEqualTo(baseCliente.getDni()),
-                    () -> assertThat(respuesta.getNombre()).isEqualTo(baseCliente.getNombre()));
+            assertAll(
+                    () -> assertThat(respuesta.getDni()).isEqualTo(baseCliente.getDni()),
+                    () -> assertThat(respuesta.getNombre()).isEqualTo(baseCliente.getNombre())
+            );
 
 
 

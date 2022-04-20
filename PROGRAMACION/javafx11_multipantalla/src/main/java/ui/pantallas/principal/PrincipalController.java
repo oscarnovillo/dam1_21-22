@@ -33,7 +33,8 @@ import java.util.Optional;
 @Log4j2
 public class PrincipalController {
 
-
+    @FXML
+    private Menu menuHelp;
     // objeto especial para DI
     Instance<Object> instance;
 
@@ -51,12 +52,7 @@ public class PrincipalController {
 
     @FXML
     private BorderPane root;
-    @FXML
-    private TextField txtNormal;
-    @FXML
-    private MFXTextField txtField;
-    @FXML
-    private MFXButton button;
+
 
     private Alert alert;
 
@@ -69,23 +65,19 @@ public class PrincipalController {
        alert= new Alert(Alert.AlertType.NONE);
     }
 
-
-
-
-
-    public void cargarPantalla(Pantallas pantalla) {
+    private void cargarPantalla(Pantallas pantalla) {
 
         switch (pantalla) {
 //            case LISTADO:
 //                cambioPantalla(cargarPantalla(pantalla.getRuta()));
 //                break;
-            case PANTALLA1:
-                if (pantallaBienvenida == null){
-                    pantallaBienvenida = cargarPantalla(pantalla.getRuta());
-                }
-
-                cambioPantalla(pantallaBienvenida);
-                break;
+//            case PANTALLA1:
+//                if (pantallaBienvenida == null){
+//                    pantallaBienvenida = cargarPantalla(pantalla.getRuta());
+//                }
+//
+//                cambioPantalla(pantallaBienvenida);
+//                break;
             default:
                 cambioPantalla(cargarPantalla(pantalla.getRuta()));
                 break;
@@ -106,7 +98,7 @@ public class PrincipalController {
         try {
 
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setControllerFactory(param -> instance.select(param).get());
+            fxmlLoader.setControllerFactory(controller -> instance.select(controller).get());
             panePantalla = fxmlLoader.load(getClass().getResourceAsStream(ruta));
             BasePantallaController pantallaController = fxmlLoader.getController();
             pantallaController.setPrincipalController(this);
@@ -121,11 +113,7 @@ public class PrincipalController {
 
 
 
-    public void loginHecho(Usuario usuario) {
-        actualUser = usuario;
-        menuPrincipal.setVisible(true);
-        cargarPantalla(Pantallas.PANTALLA1);
-    }
+
 
     public void logout() {
         actualUser = null;
@@ -158,29 +146,29 @@ public class PrincipalController {
 //                stackPane.getChildren().remove(1);
 //            });
 
-        StackPane stackPane = (StackPane) root.getCenter();
+//        StackPane stackPane = (StackPane) root.getCenter();
+//
+//        if (stackPane.getChildren().get(0) != pantallaNueva) {
+//
+//            stackPane.getChildren().add(0, pantallaNueva);
+//
+//            ScaleTransition scaleTransition = new ScaleTransition();
+//            scaleTransition.setNode(stackPane.getChildren().get(1));
+//            scaleTransition.setDuration(Duration.millis(500));
+//            scaleTransition.setFromX(stackPane.getChildren().get(1).getScaleX());
+//            scaleTransition.setFromY(stackPane.getChildren().get(1).getScaleY());
+//            scaleTransition.setToX(0);
+//            scaleTransition.setToY(0);
+//            scaleTransition.setInterpolator(Interpolator.EASE_OUT);
+//            scaleTransition.play();
+//            scaleTransition.setOnFinished(event -> {
+//                Node node = stackPane.getChildren().remove(1);
+//                node.setScaleX(1);
+//                node.setScaleY(1);
+//            });
+//        }
 
-        if (stackPane.getChildren().get(0) != pantallaNueva) {
-
-            stackPane.getChildren().add(0, pantallaNueva);
-
-            ScaleTransition scaleTransition = new ScaleTransition();
-            scaleTransition.setNode(stackPane.getChildren().get(1));
-            scaleTransition.setDuration(Duration.millis(500));
-            scaleTransition.setFromX(stackPane.getChildren().get(1).getScaleX());
-            scaleTransition.setFromY(stackPane.getChildren().get(1).getScaleY());
-            scaleTransition.setToX(0);
-            scaleTransition.setToY(0);
-            scaleTransition.setInterpolator(Interpolator.EASE_OUT);
-            scaleTransition.play();
-            scaleTransition.setOnFinished(event -> {
-                Node node = stackPane.getChildren().remove(1);
-                node.setScaleX(1);
-                node.setScaleY(1);
-            });
-        }
-
-//        root.setCenter(pantallaNueva);
+        root.setCenter(pantallaNueva);
     }
 
 
@@ -227,11 +215,31 @@ public class PrincipalController {
         primaryStage.addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, this::closeWindowEvent);
     }
 
-    public void cambiarcss(ActionEvent actionEvent) {
+    @FXML
+    private void cambiarcss(ActionEvent actionEvent) {
+        System.out.println(primaryStage.getScene().getRoot().getStylesheets().stream().findFirst().get());
+
+
         primaryStage.getScene().getRoot().getStylesheets().clear();
+
+
+
         primaryStage.getScene().getRoot().getStylesheets().add(getClass().getResource("/css/darkmode.css").toExternalForm());
 
     }
+
+
+
+    public double getHeight() {
+        return root.getScene().getWindow().getHeight();
+    }
+
+    public double getWidth()
+    {
+//        return 600;
+        return root.getScene().getWindow().getWidth();
+    }
+
 
     @FXML
     private void menuClick(ActionEvent actionEvent) {
@@ -243,6 +251,9 @@ public class PrincipalController {
             case "menuItemListado":
                 cargarPantalla(Pantallas.LISTADO);
                 break;
+            case "menuItemPantallaNueva":
+                cargarPantalla(Pantallas.PANTALLANUEVA);
+                break;
             case "menuItemLogout":
                 logout();
                 break;
@@ -251,14 +262,15 @@ public class PrincipalController {
 
     }
 
-    public double getHeight() {
-        return root.getScene().getWindow().getHeight();
-    }
+    //evento de otra pantalla
+    public void onLoginHecho(Usuario usuario) {
+        actualUser = usuario;
+        menuPrincipal.setVisible(true);
+        if (actualUser.getNombre().equals("admin")) {
+            menuHelp.setVisible(false);
+        }
 
-    public double getWidth()
-    {
-//        return 600;
-        return root.getScene().getWindow().getWidth();
+        cargarPantalla(Pantallas.PANTALLA1);
     }
 
     public void onSeleccionCromo(Cromo p) {

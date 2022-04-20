@@ -1,13 +1,10 @@
-package dao.impl;
+package dao;
 
-import com.google.gson.*;
+import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import config.Configuracion;
-import domain.modelo.Cliente;
-import domain.modelo.ClienteNormal;
-import domain.modelo.ClienteVip;
-import gsonutils.RuntimeTypeAdapterFactory;
-import jakarta.inject.Inject;
+import domain.modelo.Persona;
+
 import lombok.extern.log4j.Log4j2;
 
 import java.io.FileNotFoundException;
@@ -15,8 +12,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +19,7 @@ import java.util.List;
 public class DataBase {
 
 
-    public  List<Cliente> clientes;
+    public  List<Persona> clientes;
 
     private Gson gson;
 
@@ -59,17 +54,16 @@ public class DataBase {
 //        this.configuracion = Configuracion.getInstance();
 //    }
 
-    @Inject
-    public DataBase(Gson gson,Configuracion configuracion) {
+    public DataBase(Gson gson, Configuracion configuracion) {
         this.gson = gson;
         this.configuracion = configuracion;
     }
 
-    public List<Cliente> loadClientes() {
-        Type userListType = new TypeToken<ArrayList<Cliente>>() {
+    public List<Persona> loadClientes() {
+        Type userListType = new TypeToken<ArrayList<Persona>>() {
         }.getType();
 
-        List<Cliente> clientes = null;
+        List<Persona> clientes = null;
         try {
             clientes = gson.fromJson(
                     new FileReader(configuracion.getPathDatos()),
@@ -80,7 +74,7 @@ public class DataBase {
         return clientes;
     }
 
-    public boolean saveClientes(List<Cliente> clientes) {
+    public boolean saveClientes(List<Persona> clientes) {
 
         try (FileWriter w = new FileWriter(configuracion.getPathDatos())) {
             gson.toJson(clientes, w);

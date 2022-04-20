@@ -6,7 +6,6 @@ import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import jakarta.inject.Inject;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import ui.pantallas.common.BasePantallaController;
 
 public class LoginController extends BasePantallaController {
@@ -36,8 +35,9 @@ public class LoginController extends BasePantallaController {
             if (newState.isLoginOK())
             {
                 //cambiar de pantalla
-                this.getPrincipalController().loginHecho(new Usuario(txtUserName.getText(), txtPassword.getText()));
+                this.getPrincipalController().onLoginHecho(new Usuario(txtUserName.getText(), txtPassword.getText()));
             }
+
 
         });
     }

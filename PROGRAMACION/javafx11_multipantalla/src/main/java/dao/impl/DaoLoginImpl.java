@@ -19,7 +19,7 @@ public class DaoLoginImpl implements DaoLogin {
     public boolean doLogin(Usuario user) {
 
         // buscar usuario
-        if (user.getNombre().equals("admin"))
+        if (user.getNombre().equals("admin") || user.getNombre().equals("user"))
             return true;
         return false;
     }

@@ -5,44 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a6427cb-bc57-43fb-9d33-774f1e89807f" name="Changes" comment="adfgdfgdfg">
-      <change afterPath="$PROJECT_DIR$/../../ENTORNOS/PruebasAvanzadas/src/main/java/di/DataProducers.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../ENTORNOS/PruebasAvanzadas/src/main/java/ui/MainCDI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../ENTORNOS/PruebasAvanzadas/src/test/java/ui/MainClientesTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../ENTORNOS/PruebasAvanzadas/src/test/java/ui/PruebasIntegracion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../ENTORNOS/PruebasAvanzadas/src/test/resources/config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../javafx11/src/main/resources/fonts/GrapeNuts-Regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../javafx11_multipantalla/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../javafx11_multipantalla/src/main/java/ui/main/CDIJavafx.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../javafx11_multipantalla/src/main/java/ui/main/FXMLLoaderProducer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../javafx11_multipantalla/src/main/java/ui/main/MainFX.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../javafx11_multipantalla/src/main/java/ui/main/Producers.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../javafx11_multipantalla/src/main/java/ui/main/StartupScene.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../javafx11_multipantalla/src/main/java/ui/pantallas/pantalla1/Pantalla1Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../javafx11_multipantalla/src/main/java/ui/pantallas/principal/PrincipalController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../javafx11_multipantalla/src/main/resources/META-INF/beans.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../javafx11_multipantalla/src/main/resources/config/config.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../javafx11_multipantalla/src/main/resources/fonts/BeauRivage-Regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../javafx11_multipantalla/src/main/resources/fxml/ejemploRibbon.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../javafx11_multipantalla/src/main/resources/fxml/pantalla1.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../javafx11_multipantalla/src/main/resources/fxml/principal.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../javafx11_multipantalla/src/main/resources/fxml/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../javafx11_multipantalla/src/main/resources/i18n/textos.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ENTORNOS/PruebasAvanzadas/data/cliente.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../ENTORNOS/PruebasAvanzadas/data/cliente.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ENTORNOS/PruebasAvanzadas/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ENTORNOS/PruebasAvanzadas/src/test/java/servicios/ServiciosClientesImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx11/src/main/java/dao/DataBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx11_multipantalla/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx11_multipantalla/src/main/java/ui/pantallas/common/ConstantesPantallas.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx11_multipantalla/src/main/java/ui/pantallas/pantallaNueva/PantallaNuevaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx11_multipantalla/src/main/resources/fxml/pantallaNueva.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../ENTORNOS/PruebasAvanzadas/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ENTORNOS/PruebasAvanzadas/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ENTORNOS/PruebasAvanzadas/src/main/java/config/Configuracion.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ENTORNOS/PruebasAvanzadas/src/main/java/config/Configuracion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ENTORNOS/PruebasAvanzadas/src/main/java/dao/DaoClientes.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ENTORNOS/PruebasAvanzadas/src/main/java/dao/DaoClientes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ENTORNOS/PruebasAvanzadas/src/main/java/dao/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ENTORNOS/PruebasAvanzadas/src/main/java/dao/DataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ENTORNOS/PruebasAvanzadas/src/main/java/servicios/ServiciosClientes.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ENTORNOS/PruebasAvanzadas/src/main/java/servicios/ServiciosClientes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ENTORNOS/PruebasAvanzadas/src/main/java/ui/MainClientes.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ENTORNOS/PruebasAvanzadas/src/main/java/ui/MainClientes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ENTORNOS/PruebasAvanzadas/src/main/resources/META-INF/beans.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ENTORNOS/PruebasAvanzadas/src/main/resources/META-INF/beans.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ENTORNOS/PruebasAvanzadas/src/main/java/servicios/ServiciosClientesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ENTORNOS/PruebasAvanzadas/src/main/java/servicios/ServiciosClientesImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../ENTORNOS/PruebasAvanzadas/src/test/java/dao/DaoClientesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ENTORNOS/PruebasAvanzadas/src/test/java/dao/DaoClientesTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ENTORNOS/PruebasAvanzadas/src/test/java/dao/DataBaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ENTORNOS/PruebasAvanzadas/src/test/java/dao/DataBaseTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ficheros/src/main/java/dao/impl/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Ficheros/src/main/java/dao/impl/DataBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../javafx11/src/main/java/ui/MainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/../javafx11/src/main/java/ui/MainFX.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../javafx11/src/main/java/ui/pantallas/principal/PrincipalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../javafx11/src/main/java/ui/pantallas/principal/PrincipalController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../javafx11/src/main/resources/fxml/principal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../javafx11/src/main/resources/fxml/principal.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../javafx11/src/main/resources/fxml/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/../javafx11/src/main/resources/fxml/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../javafx11_multipantalla/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../javafx11_multipantalla/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../javafx11_multipantalla/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../javafx11_multipantalla/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../javafx11/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../javafx11/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../javafx11/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/../javafx11/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../javafx11/src/main/resources/fxml/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/../javafx11/src/main/resources/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../javafx11_multipantalla/src/main/java/dao/impl/DaoLoginImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../javafx11_multipantalla/src/main/java/dao/impl/DaoLoginImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../javafx11_multipantalla/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/../javafx11_multipantalla/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../javafx11_multipantalla/src/main/java/ui/main/CDIJavafx.java" beforeDir="false" afterPath="$PROJECT_DIR$/../javafx11_multipantalla/src/main/java/ui/main/DIJavafx.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../javafx11_multipantalla/src/main/java/ui/main/FXMLLoaderProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../javafx11_multipantalla/src/main/java/ui/main/FXMLLoaderProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../javafx11_multipantalla/src/main/java/ui/pantallas/common/Pantallas.java" beforeDir="false" afterPath="$PROJECT_DIR$/../javafx11_multipantalla/src/main/java/ui/pantallas/common/Pantallas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../javafx11_multipantalla/src/main/java/ui/pantallas/login/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../javafx11_multipantalla/src/main/java/ui/pantallas/login/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../javafx11_multipantalla/src/main/java/ui/pantallas/principal/PrincipalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../javafx11_multipantalla/src/main/java/ui/pantallas/principal/PrincipalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../javafx11_multipantalla/src/main/resources/fxml/principal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../javafx11_multipantalla/src/main/resources/fxml/principal.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../javafx11_multipantalla/src/test/java/ui/TestPantallaLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/../javafx11_multipantalla/src/test/java/ui/TestPantallaLogin.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,6 +205,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="a" />

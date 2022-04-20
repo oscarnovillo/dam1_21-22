@@ -31,6 +31,8 @@ public class DataBase {
         this.gson = gson;
         this.configuracion = configuracion;
     }
+
+
     public List<Cliente> loadClientes() {
         Type userListType = new TypeToken<ArrayList<Cliente>>() {
         }.getType();

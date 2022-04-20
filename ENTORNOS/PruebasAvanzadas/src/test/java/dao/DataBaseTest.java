@@ -30,7 +30,7 @@ class DataBaseTest {
     private DataBase database;
 
 
-    private static  SeContainer container;
+    private static SeContainer container;
 
     @BeforeAll
     static void beforeAll() {

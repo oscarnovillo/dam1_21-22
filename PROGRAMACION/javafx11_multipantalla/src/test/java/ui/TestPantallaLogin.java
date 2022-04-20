@@ -1,6 +1,7 @@
 package ui;
 
 import domain.usecases.LoginUseCase;
+import domain.usecases.LoginUseCaseImpl;
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.enterprise.inject.se.SeContainerInitializer;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +16,6 @@ import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.ApplicationTest;
 import org.testfx.framework.junit5.Start;
-import org.testfx.matcher.base.NodeMatchers;
 import ui.pantallas.login.LoginController;
 import ui.pantallas.login.LoginViewModel;
 import ui.pantallas.principal.PrincipalController;
@@ -47,7 +47,7 @@ public class TestPantallaLogin extends ApplicationTest {
     public void start(Stage stage) throws IOException {
 
         principalController = mock(PrincipalController.class);
-        loginUseCase = mock(LoginUseCase.class);
+        loginUseCase = mock(LoginUseCaseImpl.class);
 
 
         SeContainerInitializer initializer = SeContainerInitializer.newInstance();
@@ -82,7 +82,7 @@ public class TestPantallaLogin extends ApplicationTest {
 
         //then
 
-        verify(principalController).loginHecho(argThat(usuario -> usuario.getNombre().equals("admin")));
+        verify(principalController).onLoginHecho(argThat(usuario -> usuario.getNombre().equals("admin")));
     }
 
     @Test

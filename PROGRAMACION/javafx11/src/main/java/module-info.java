@@ -8,6 +8,7 @@ module javafx {
     requires org.apache.logging.log4j;
     requires com.fasterxml.jackson.dataformat.yaml;
     requires com.fasterxml.jackson.databind;
+    requires com.google.gson;
 
     exports ui;
     opens domain.modelo to javafx.base;

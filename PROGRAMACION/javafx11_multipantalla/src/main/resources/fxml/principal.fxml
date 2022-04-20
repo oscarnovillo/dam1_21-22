@@ -30,14 +30,14 @@
                         <MenuItem fx:id="menuItemNew" mnemonicParsing="false" text="New" />
                         <MenuItem fx:id="menuItemPantalla1" mnemonicParsing="false" onAction="#menuClick" text="Pantalla1" />
                         <MenuItem fx:id="menuItemListado" mnemonicParsing="false" onAction="#menuClick" text="listado" />
-                        <MenuItem fx:id="menuItemSaveAs" mnemonicParsing="false" text="Save As..." />
+                        <MenuItem fx:id="menuItemPantallaNueva" mnemonicParsing="false"  onAction="#menuClick" text="pantallaNueva" />
                         <MenuItem fx:id="menuItemLogout" mnemonicParsing="false" onAction="#menuClick" text="Logout" />
                         <MenuItem fx:id="menuItemExit" mnemonicParsing="false" onAction="#exit" text="Exit" />
                     </items>
                 </Menu>
                 <Menu fx:id="menuEdit" mnemonicParsing="false" text="Edit">
                     <items>
-                        <MenuItem fx:id="menuItemUndo" mnemonicParsing="false" text="Undo" />
+                        <MenuItem fx:id="menuItemUndo" mnemonicParsing="false" onAction="#cambiarcss" text="Undo" />
                         <MenuItem fx:id="menuItemRedo" mnemonicParsing="false" text="Redo" />
                         <MenuItem fx:id="menuItemCut" mnemonicParsing="false" text="Cut" />
                         <MenuItem fx:id="menuItemCopy" mnemonicParsing="false" text="Copy" />

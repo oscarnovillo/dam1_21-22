@@ -21,7 +21,6 @@ public class ServiciosClientesImpl implements ServiciosClientes {
         return dao.addCliente(c);
     }
 
-
     @Override
     public boolean updateCliente(Cliente c)
     {
