@@ -45,6 +45,12 @@ public class ListadoController extends BasePantallaController {
 
         tabla.getTableColumns().addAll(collecionColumn, descriptionColumn, numberColumn);
 
+        cambiosEstado();
+        viewModel.loadCromos();
+        // tabla.setItems(viewModel.getState().get().getPersonas());
+    }
+
+    private void cambiosEstado() {
         viewModel.getState().addListener((observableValue, listadoState, listadoStateNew) -> {
             if (listadoStateNew.getError()!=null){
                 getPrincipalController().sacarAlertError(listadoStateNew.getError());
@@ -57,7 +63,5 @@ public class ListadoController extends BasePantallaController {
 
 
         });
-        viewModel.loadCromos();
-        // tabla.setItems(viewModel.getState().get().getPersonas());
     }
 }
