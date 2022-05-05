@@ -89,6 +89,7 @@ public class PrincipalController {
     {
         alert.setAlertType(Alert.AlertType.ERROR);
         alert.setContentText(mensaje);
+        alert.getDialogPane().lookupButton(ButtonType.OK).setId("btn-ok");
         alert.showAndWait();
     }
 

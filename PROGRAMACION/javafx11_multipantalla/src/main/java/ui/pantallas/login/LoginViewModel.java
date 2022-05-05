@@ -8,7 +8,7 @@ import javafx.beans.property.*;
 public class LoginViewModel {
 
 
-    private LoginUseCase loginUseCase;
+    private final LoginUseCase loginUseCase;
 
     @Inject
     public LoginViewModel(LoginUseCase loginUseCase) {

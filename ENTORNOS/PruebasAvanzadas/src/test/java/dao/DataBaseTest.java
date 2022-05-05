@@ -7,11 +7,15 @@ import di.DataProducers;
 import domain.modelo.Cliente;
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.enterprise.inject.se.SeContainerInitializer;
+import jakarta.inject.Inject;
 import lombok.extern.log4j.Log4j2;
+import nl.altindag.log.LogCaptor;
+
+import nl.altindag.log.model.LogEvent;
+import org.jboss.weld.junit5.WeldJunit5Extension;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Spy;
+import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ui.MainClientes;
 
@@ -28,13 +32,16 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
+@ExtendWith(WeldJunit5Extension.class)
 @Log4j2
 class DataBaseTest {
 
 
     //clase a probar
+    @Inject
     private DataBase database;
 
 
@@ -42,8 +49,8 @@ class DataBaseTest {
 
     @BeforeAll
     static void beforeAll() {
-        SeContainerInitializer initializer = SeContainerInitializer.newInstance();
-        container = initializer.initialize();
+//        SeContainerInitializer initializer = SeContainerInitializer.newInstance();
+//        container = initializer.initialize();
 
 
     }
@@ -56,28 +63,38 @@ class DataBaseTest {
             e.printStackTrace();
         }
 
-        database = container.select(DataBase.class).get();
+        //database = container.select(DataBase.class).get();
     }
 
     @AfterAll
     static void afterAll() {
-        container.close();
+        //container.close();
     }
 
     @Test
     void loadClientesFicheroNoExiste() {
         //given
         List<Cliente> resultado;
-
-
+        LogCaptor logCaptor = LogCaptor.forClass(DataBase.class);
 
         //when
         resultado = database.loadClientes();
 
         //then
+        List<LogEvent> logEvents = logCaptor.getLogEvents();
+        assertThat(logEvents).hasSize(1);
+
+        LogEvent logEvent = logEvents.get(0);
+        //assertThat(logEvent.getMessage()).isEqualTo("Caught unexpected exception");
+        assertThat(logEvent.getLevel()).isEqualTo("ERROR");
+        assertThat(logEvent.getThrowable()).isPresent();
+
+        assertThat(logEvent.getThrowable().get())
+               // .hasMessage("KABOOM!")
+                .isInstanceOf(IOException.class);
+
+
         assertThat(resultado).isEmpty();
-
-
     }
 
 

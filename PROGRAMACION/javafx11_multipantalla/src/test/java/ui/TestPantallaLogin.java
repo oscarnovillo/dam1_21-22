@@ -4,6 +4,7 @@ import domain.usecases.LoginUseCase;
 import domain.usecases.LoginUseCaseImpl;
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.enterprise.inject.se.SeContainerInitializer;
+import jakarta.inject.Inject;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,7 +12,10 @@ import javafx.stage.Stage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.testfx.api.FxAssert;
 import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.ApplicationTest;
@@ -25,7 +29,7 @@ import java.io.InputStream;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.mockito.Mockito.*;
-import static org.testfx.api.FxAssert.verifyThat;
+
 
 
 @ExtendWith(ApplicationExtension.class)
@@ -35,12 +39,15 @@ public class TestPantallaLogin extends ApplicationTest {
 
     private PrincipalController principalController; // = mock(PrincipalController.class);;
 
-
+    @Mock
     private LoginUseCase loginUseCase; // = mock(LoginUseCase.class);
+
+    @InjectMocks
+    private LoginViewModel loginViewModel;
 
     @BeforeEach
     void setUp() {
-        // principalController = mock(PrincipalController.class);
+        principalController = mock(PrincipalController.class);
     }
 
     @Start
@@ -48,13 +55,14 @@ public class TestPantallaLogin extends ApplicationTest {
 
         principalController = mock(PrincipalController.class);
         loginUseCase = mock(LoginUseCaseImpl.class);
+        loginViewModel = new LoginViewModel(loginUseCase);
 
 
         SeContainerInitializer initializer = SeContainerInitializer.newInstance();
         final SeContainer container = initializer.initialize();
 
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setControllerFactory(param -> new LoginController(new LoginViewModel(loginUseCase)));
+        fxmlLoader.setControllerFactory(param -> new LoginController(loginViewModel));
         InputStream s = getClass().getResourceAsStream("/fxml/login.fxml");
         Parent fxmlParent = fxmlLoader.load(s);
         LoginController controller = fxmlLoader.getController();
@@ -79,6 +87,8 @@ public class TestPantallaLogin extends ApplicationTest {
 
         //when
         robot.clickOn("#btLogin");
+
+        //FxAssert.verifyThat("#btLogin").textIs("Login");
 
         //then
 

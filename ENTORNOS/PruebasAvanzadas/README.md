@@ -15,6 +15,7 @@
 - Mocks, Spy
 - when / thenreturn
 - when / thenThrow
+- Arguments captor
 - verify
 - inject mocks
 
