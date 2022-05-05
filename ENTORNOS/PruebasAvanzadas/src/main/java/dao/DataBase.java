@@ -38,11 +38,11 @@ public class DataBase {
         }.getType();
 
         List<Cliente> clientes = null;
-        try {
+        try(FileReader r = new FileReader(configuracion.getPathDatos())) {
             clientes = gson.fromJson(
-                    new FileReader(configuracion.getPathDatos()),
+                    r,
                     userListType);
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             log.error(e.getMessage(), e);
         }
         if (clientes == null) {
