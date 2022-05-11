@@ -1,0 +1,93 @@
+{
+  "1": {
+    "type": "ClientNormal",
+    "name": "BLA",
+    "dni": "1",
+    "wallets": [
+      {
+        "code": "1",
+        "money": 8.0
+      }
+    ],
+    "shoppingCart": [],
+    "previousPurchases": [
+      [
+        {
+          "product": {
+            "type": "ProductNormal",
+            "name": "PAN",
+            "price": 0.0,
+            "stock": 0
+          },
+          "quantity": 2,
+          "price": 2.0
+        }
+      ]
+    ],
+    "allergens": []
+  },
+  "2": {
+    "discount": 10.0,
+    "type": "ClientWithDiscount",
+    "name": "E",
+    "dni": "2",
+    "wallets": [
+      {
+        "code": "1",
+        "money": 8.299999999999994
+      },
+      {
+        "code": "2",
+        "money": 10.0
+      }
+    ],
+    "shoppingCart": [],
+    "previousPurchases": [
+      [
+        {
+          "product": {
+            "type": "ProductNormal",
+            "name": "ACEITE",
+            "price": 0.0,
+            "stock": 0
+          },
+          "quantity": 1,
+          "price": 90.0
+        },
+        {
+          "product": {
+            "type": "ProductNormal",
+            "name": "PAN",
+            "price": 0.0,
+            "stock": 0
+          },
+          "quantity": 1,
+          "price": 0.9
+        }
+      ],
+      [
+        {
+          "product": {
+            "type": "ProductNormal",
+            "name": "PAN",
+            "price": 0.0,
+            "stock": 0
+          },
+          "quantity": 2,
+          "price": 1.8
+        }
+      ]
+    ],
+    "allergens": []
+  },
+  "4": {
+    "discount": 2.0,
+    "type": "ClientWithDiscount",
+    "name": "BLA",
+    "dni": "4",
+    "wallets": [],
+    "shoppingCart": [],
+    "previousPurchases": [],
+    "allergens": []
+  }
+}
