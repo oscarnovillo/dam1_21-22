@@ -31,6 +31,8 @@ module javafx11.multipantalla {
     opens ui.pantallas.listado to javafx.fxml;
     opens ui.pantallas.login to  javafx.fxml;
     opens ui.pantallas.detalle to  javafx.fxml;
+
+    opens domain.modelo to javafx.base;
     opens ui.pantallas.principal;
     opens ui.main;
     opens config;

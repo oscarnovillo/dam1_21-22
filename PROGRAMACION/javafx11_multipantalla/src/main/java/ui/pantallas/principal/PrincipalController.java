@@ -63,6 +63,8 @@ public class PrincipalController {
     public PrincipalController(Instance<Object> instance) {
        this.instance = instance;
        alert= new Alert(Alert.AlertType.NONE);
+
+
     }
 
     private void cargarPantalla(Pantallas pantalla) {
@@ -89,7 +91,9 @@ public class PrincipalController {
     {
         alert.setAlertType(Alert.AlertType.ERROR);
         alert.setContentText(mensaje);
+        alert.getDialogPane().setId("alert");
         alert.getDialogPane().lookupButton(ButtonType.OK).setId("btn-ok");
+        //alert.getDialogPane().lookupButton(ButtonType.CANCEL).setId("btn-cancel");
         alert.showAndWait();
     }
 

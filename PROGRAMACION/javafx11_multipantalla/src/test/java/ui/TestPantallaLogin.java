@@ -8,6 +8,7 @@ import jakarta.inject.Inject;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -47,7 +48,7 @@ public class TestPantallaLogin extends ApplicationTest {
 
     @BeforeEach
     void setUp() {
-        principalController = mock(PrincipalController.class);
+        //principalController = mock(PrincipalController.class);
     }
 
     @Start
@@ -102,13 +103,18 @@ public class TestPantallaLogin extends ApplicationTest {
         robot.write("otro");
         when(loginUseCase.doLogin(argThat(usuario -> !usuario.getNombre().equals("admin")))).thenReturn(false);
         //when(loginUseCase.doLogin(any(Usuario.class))).thenReturn(true);
+        TextField text = lookup("#txtUserName").queryAs(TextField.class);
+
+
+        text.setText("otrogggg");
+        robot.sleep(1000);
 
         //when
-        robot.clickOn("#btLogin");
+        robot.clickOn(".button");
 
         //then
         assertAll(
-                () -> verify(principalController).sacarAlertError("usuario o pass no valido"));
+                () -> verify(principalController).sacarAlertError(any()));
 //        Node dialogPane = robot.lookup(".dialog-pane").query();
 //        assertNotNull(robot.from(dialogPane).lookup((Text t) -> t.getText().startsWith("usuario o pass no valido")).query());
         robot.sleep(1000);
