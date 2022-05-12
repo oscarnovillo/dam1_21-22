@@ -29,7 +29,7 @@ public class LoginViewModel {
         }
         else
         {
-            state.setValue(new LoginState(false,"usuario o pass no valido"));
+            state.setValue(new LoginState(false,"usuario "+usuario.getNombre()+" no valido"));
         }
     }
 }

@@ -78,9 +78,10 @@ class PrincipalControllerTest {
     void menuItemListadoClick(FxRobot robot) {
         //given
         Usuario usuario = new Usuario("admin", "admin");
-        Platform.runLater(() -> {
+        robot.interact(() -> {
             principalController.onLoginHecho(usuario);
         });
+
         robot.sleep(1000);
 
         //when
@@ -98,7 +99,7 @@ class PrincipalControllerTest {
         Usuario usuario = new Usuario("admin", "admin");
 
         //when
-        Platform.runLater(() -> {
+        robot.interact(() -> {
             principalController.onLoginHecho(usuario);
         });
         robot.sleep(1000);

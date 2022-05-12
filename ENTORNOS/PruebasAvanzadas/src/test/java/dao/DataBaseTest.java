@@ -50,8 +50,6 @@ class DataBaseTest {
     static void beforeAll() {
         SeContainerInitializer initializer = SeContainerInitializer.newInstance();
         container = initializer.initialize();
-
-
     }
 
     @BeforeEach

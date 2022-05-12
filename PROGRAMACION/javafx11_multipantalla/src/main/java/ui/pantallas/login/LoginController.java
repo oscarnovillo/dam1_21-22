@@ -13,8 +13,6 @@ public class LoginController extends BasePantallaController {
     private LoginViewModel loginViewModel;
 
     @FXML
-    private MFXButton btLogin;
-    @FXML
     private MFXPasswordField txtPassword;
     @FXML
     private MFXTextField txtUserName;

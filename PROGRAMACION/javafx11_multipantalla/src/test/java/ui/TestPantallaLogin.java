@@ -40,11 +40,12 @@ public class TestPantallaLogin extends ApplicationTest {
 
     private PrincipalController principalController; // = mock(PrincipalController.class);;
 
-    @Mock
+
     private LoginUseCase loginUseCase; // = mock(LoginUseCase.class);
 
-    @InjectMocks
+
     private LoginViewModel loginViewModel;
+    LoginController controller;
 
     @BeforeEach
     void setUp() {
@@ -58,17 +59,14 @@ public class TestPantallaLogin extends ApplicationTest {
         loginUseCase = mock(LoginUseCaseImpl.class);
         loginViewModel = new LoginViewModel(loginUseCase);
 
-
-        SeContainerInitializer initializer = SeContainerInitializer.newInstance();
-        final SeContainer container = initializer.initialize();
-
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(param -> new LoginController(loginViewModel));
         InputStream s = getClass().getResourceAsStream("/fxml/login.fxml");
         Parent fxmlParent = fxmlLoader.load(s);
-        LoginController controller = fxmlLoader.getController();
+        controller = fxmlLoader.getController();
         controller.setPrincipalController(principalController);
-        ;
+
+
 
         stage.setScene(new Scene(fxmlParent));
         stage.getScene().getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
@@ -104,17 +102,15 @@ public class TestPantallaLogin extends ApplicationTest {
         when(loginUseCase.doLogin(argThat(usuario -> !usuario.getNombre().equals("admin")))).thenReturn(false);
         //when(loginUseCase.doLogin(any(Usuario.class))).thenReturn(true);
         TextField text = lookup("#txtUserName").queryAs(TextField.class);
-
-
         text.setText("otrogggg");
-        robot.sleep(1000);
+
 
         //when
         robot.clickOn(".button");
 
         //then
         assertAll(
-                () -> verify(principalController).sacarAlertError(any()));
+                () -> verify(principalController).sacarAlertError("usuario o pass no valido"));
 //        Node dialogPane = robot.lookup(".dialog-pane").query();
 //        assertNotNull(robot.from(dialogPane).lookup((Text t) -> t.getText().startsWith("usuario o pass no valido")).query());
         robot.sleep(1000);
