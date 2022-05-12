@@ -1,6 +1,6 @@
 package dao;
 
-import com.google.gson.Gson;
+import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import config.Configuracion;
 import di.DataProducers;
@@ -27,6 +27,8 @@ import java.lang.reflect.Type;
 import java.nio.file.CopyOption;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,13 +37,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-@ExtendWith(WeldJunit5Extension.class)
 @Log4j2
 class DataBaseTest {
 
-
     //clase a probar
-    @Inject
     private DataBase database;
 
 
@@ -49,8 +48,8 @@ class DataBaseTest {
 
     @BeforeAll
     static void beforeAll() {
-//        SeContainerInitializer initializer = SeContainerInitializer.newInstance();
-//        container = initializer.initialize();
+        SeContainerInitializer initializer = SeContainerInitializer.newInstance();
+        container = initializer.initialize();
 
 
     }
@@ -63,12 +62,12 @@ class DataBaseTest {
             e.printStackTrace();
         }
 
-        //database = container.select(DataBase.class).get();
+        database = container.select(DataBase.class).get();
     }
 
     @AfterAll
     static void afterAll() {
-        //container.close();
+        container.close();
     }
 
     @Test

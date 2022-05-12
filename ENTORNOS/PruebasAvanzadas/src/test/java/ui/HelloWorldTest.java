@@ -54,6 +54,7 @@ class HelloWorldTest {
     void sayHello() {
         String name = "World";
 
+        //when
         HelloWorld helloWorld = new HelloWorld();
         helloWorld.sayHello(name);
 

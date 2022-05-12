@@ -7,7 +7,7 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Logger name="ui.MainConfigInterno" level="all" additivity="false">
+        <Logger name="org.jboss.weld.Bootstrap" level="all" additivity="false">
             <AppenderRef ref="ConsoleAppender"/>
         </Logger>
 

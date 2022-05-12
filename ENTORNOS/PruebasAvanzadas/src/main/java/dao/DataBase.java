@@ -43,7 +43,8 @@ public class DataBase {
                     r,
                     userListType);
         } catch (IOException e) {
-            log.error(e.getMessage(), e);
+
+            log.error(e.getMessage(),e);
         }
         if (clientes == null) {
             clientes = new ArrayList<>();
