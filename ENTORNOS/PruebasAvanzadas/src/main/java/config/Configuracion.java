@@ -17,13 +17,20 @@ import java.util.Properties;
 public class Configuracion {
 
     private String pathDatos;
+    private String pathDatos2;
 
     public Configuracion() {
 
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
         mapper.findAndRegisterModules();
 
-        try {
+        try  {
+            Properties p = new Properties();
+            p.load(getClass().getClassLoader().getResourceAsStream("config.properties"));
+            this.pathDatos = p.getProperty("pathDatos");
+            this.pathDatos2 = p.getProperty("pathDatos2");
+
+
             JsonNode node = mapper.readTree(
                     Configuracion.class.getClassLoader().getResourceAsStream("config.yaml"));
             this.pathDatos = node.get("pathDatos").asText();

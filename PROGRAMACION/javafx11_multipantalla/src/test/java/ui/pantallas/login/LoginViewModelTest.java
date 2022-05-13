@@ -64,7 +64,7 @@ class LoginViewModelTest {
 
         //given
         Usuario user = new Usuario("otro", "");
-        LoginState stateEsperado  = new LoginState(false,"usuario o pass no valido");
+        LoginState stateEsperado  = new LoginState(false,"usuario "+user.getNombre()+" no valido");
         when(loginUseCase.doLogin(argThat(usuario -> usuario.getNombre().equals("otro")))).thenReturn(false);
 
         //when

@@ -123,7 +123,7 @@ class PrincipalControllerTest {
         //given
 
         //when
-        Platform.runLater(() -> {
+        robot.interact(() -> {
          principalController.sacarAlertError("mensaje");
         });
         robot.sleep(1000);

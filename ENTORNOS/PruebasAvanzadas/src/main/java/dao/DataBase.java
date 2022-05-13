@@ -25,6 +25,7 @@ public class DataBase {
 
     private Configuracion configuracion;
 
+    private String _state;
 
     @Inject
     public DataBase(Gson gson, Configuracion configuracion) {
